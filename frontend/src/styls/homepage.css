@@ -1,0 +1,160 @@
+/* Overall page container */
+.home-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif; /* Use a modern and professional font */
+}
+
+/* Background image container */
+.background {
+  position: fixed; /* Use fixed to ensure the background stays in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/homeblur1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  filter: blur(8px); /* Adjust the blur amount */
+  z-index: -1; /* Keep the background behind the content */
+}
+
+.background1 {
+  position: fixed; /* Use fixed to ensure the background stays in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/homeblur1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  filter: blur(4px); /* Adjust the blur amount */
+  z-index: -1; /* Keep the background behind the content */
+}
+/* Main content container */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  height: calc(100vh - 80px); /* Adjust height to account for the fixed header */
+  color: white;
+  z-index: 1; /* Ensure content is above the blurred background */
+  padding: 20px;
+  text-align: center; /* Ensure content is centered */
+  margin-top: 80px; /* Space for the fixed header */
+}
+
+/* Header styles */
+.home-header {
+  position: fixed; /* Fix header at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Dark background with transparency */
+  z-index: 10; /* Higher z-index to keep it above other content */
+  padding: 10px 0;
+  text-align: center;
+}
+
+.home-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: rgb(20, 4, 142);
+  font-weight: 900;
+}
+
+.home-header p {
+  margin-top: 10px;
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+/* Info section styles */
+.home-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Space between elements */
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 20px; /* Additional space between header and info section */
+}
+
+/* Info detail styling */
+.home-info-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 1000px;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background with transparency */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow for more depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.home-info-detail:hover {
+  transform: translateY(-5px); /* Subtle hover effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+}
+
+.home-info-detail h3 {
+  margin-top: 0;
+  padding-top: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.home-info-detail p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  color: #e0e0e0; /* Softer text color */
+}
+
+/* Button styles */
+.home-info-detail button {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for button */
+}
+
+.home-info-detail button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* Button container to center the button */
+.b_container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Image styling */
+.homeimage {
+  width: 900px;
+  max-width: 600px; /* Increase the maximum width to make the image larger */
+  border-radius: 50%; /* Rounded edges for images */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Image shadow for depth */
+  transition: transform 0.3s ease; /* Smooth transition on hover */
+  margin-left: 20px; /* Added margin for better alignment */
+}
+
+.homeimage:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}

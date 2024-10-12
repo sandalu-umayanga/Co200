@@ -1,0 +1,130 @@
+/* patients.css */
+
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.button-set1 {
+    margin-bottom: 20px;
+}
+
+.button-set1 h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+button {
+    background-color: #7083ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #353fff;
+}
+
+.search-container {
+    position: relative;
+    width: 400px;
+    max-width: 600px;
+}
+
+.search-input {
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-result {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-result:hover {
+    background-color: #f1f1f1;
+}
+
+.selected-patient {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.patient-table th,
+.patient-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.patient-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.patient-table td {
+    background-color: #fff;
+}
+
+.patient-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Space between buttons and report */
+}
+
+.navigation-buttons button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px; /* Spacing between buttons */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.navigation-buttons button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.navigation-buttons button:hover:enabled {
+    background-color: #0056b3;
+}

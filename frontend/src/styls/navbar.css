@@ -1,0 +1,315 @@
+/* Navbar container */
+/* Remove default body margins and paddings */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar container */
+.nav-bar {
+    width: 100%; /* Ensure navbar spans the full width of the viewport */
+    margin: 0; /* Remove any default margin */
+    padding: 10px 20px; /* Padding around the navbar */
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between home button and username */
+    background-color: #002b36; /* Light grey background for better visibility */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: relative; /* To allow absolute positioning of dropdown */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+
+/* Home button styles */
+.home-icon {
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    background-color:#0c8f06;
+    border: none; /* Remove default button styles */
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 5px 10px; /* Add some padding for better click area */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.home-icon p {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+.home-icon:hover {
+    background-color: #33e026; /* Light hover effect */
+    border-radius: 8px; /* Rounded corners on hover */
+    transform: scale(1.05);
+}
+
+/* Image within the home button */
+.nav-image {
+    max-width: 40px;
+    max-height: 40px;
+    margin-right: 8px; /* Space between image and text */
+    border-radius: 100%;
+}
+
+/* Username styling */
+.user-name {
+    display: flex;
+    margin-right: 10px;
+    align-items: center; /* Align icon and text vertically */
+    background-color:#0c8f06;
+    border: none; /* Remove default button styles */
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 5px 10px; /* Add some padding for better click area */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.user-name p {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bolder;
+}
+/* Adjust the profile image within the user-name button */
+.nav-prof-pic {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px; /* Space between image and text */
+    border-radius: 100%;
+}
+
+/* Style for the user name text */
+.user-name span {
+    display: flex;
+    align-items: center; /* Align text vertically with image */
+}
+
+.user-name:hover {
+    background-color: #33e026; /* Light hover effect */
+    border-radius: 8px; /* Rounded corners on hover */
+    transform: scale(1.05);
+}
+/* User section to keep dropdown aligned */
+.user-section {
+    position: relative; /* Set relative position for dropdown positioning */
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    margin-top: 12px;
+    position: absolute; /* Position absolutely to appear outside of nav-bar */
+    top: 100%; /* Position directly below the user-name button */
+    right: 0; /* Align right edge with the right edge of the parent container */
+    background-color: white; /* Background color for the dropdown */
+    border: 1px solid #ddd; /* Border around the dropdown */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 1000; /* Ensure dropdown is above other elements */
+    min-width: 150px; /* Minimum width for dropdown */
+    max-height: 300px; /* Limit height to prevent overflow */
+    overflow-y: auto; /* Scroll if content exceeds max-height */
+}
+/* Dropdown menu items styling */
+/* Dropdown item styles */
+.dropdown-item {
+    font-family: 'Roboto', sans-serif; /* Use a clean, modern sans-serif font */
+    text-align: center;
+    font-size: 17px;
+    margin: 0;
+    padding: 10px 0; /* Adjust padding for better spacing */
+    cursor: pointer;
+    color: #333; /* Text color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Add hover effect for dropdown items */
+.dropdown-item:hover {
+    background-color: #6175f8; /* Light background color on hover */
+}
+
+
+
+/* Register button styles */
+.Register-button {
+    background-color:#0c8f06; /* Matches the background color of other buttons */
+    border: none; /* Remove default button border */
+    border-radius: 8px; /* Rounded corners for consistency */
+    color: #333; /* Text color for contrast */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Font size for readability */
+    font-weight: 400; /* Font weight for prominence */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
+    margin-left: 20px;
+    margin-right: auto;
+    padding: 5px 10px;
+    padding: 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+.Register-button:hover {
+    background-color: #33e026; /* Hover effect color */
+    transform: scale(1.05); /* Slight scale up on hover */
+}
+
+/* Staff button styles (similar padding and alignment as the Home button) */
+.staf-view {
+    display: flex;
+    align-items: center; /* Align text vertically */
+    background-color: #0c8f06; /* Matches the background color of other buttons */
+    border: none; /* Remove default button border */
+    border-radius: 8px; /* Rounded corners for consistency */
+    color: #333; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 20px; /* Similar padding to the home button for a consistent look */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
+    font-size: 1rem; /* Font size for readability */
+    font-weight: 400; /* Font weight for prominence */
+    margin-left: auto;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bolder;
+   /* margin-right: 20px;*/
+
+}
+
+.staf-view:hover {
+    background-color: #33e026; /* Hover effect color */
+    transform: scale(1.05); /* Slight scale up on hover */
+}
+
+/* Staff container to keep dropdown aligned */
+.staff-container {
+    position: relative; /* Set relative position for dropdown positioning */
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+/* Staff dropdown menu styles */
+.staff-dropdown {
+    margin-top: 12px;
+    position: absolute; /* Position absolutely to appear outside of nav-bar */
+    top: 100%; /* Position directly below the staf-view button */
+    left: 50%; /* Start dropdown in the center horizontally */
+    transform: translateX(-50%); /* Center the dropdown relative to the staf-view button */
+    background-color: white; /* Background color for the dropdown */
+    border: 1px solid #ddd; /* Border around the dropdown */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 1000; /* Ensure dropdown is above other elements */
+    min-width: 150px; /* Minimum width for dropdown */
+    max-height: 300px; /* Limit height to prevent overflow */
+    overflow-y: auto; /* Scroll if content exceeds max-height */
+}
+
+/* Staff dropdown items styling */
+.staff-dropdown p {
+    font-family: 'Roboto', sans-serif; /* Use a clean, modern sans-serif font */
+    text-align: center;
+    font-size: 17px;
+    margin: 0;
+    padding: 10px 0; /* Adjust padding for better spacing */
+    cursor: pointer;
+    color: #333; /* Text color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Add hover effect for staff dropdown items */
+.staff-dropdown p:hover {
+    background-color: #6175f8; /* Light background color on hover */
+}
+
+/* Adjust the staff button's alignment */
+.staf-view {
+    margin-left: auto; /* Push the button to the far right */
+}
+
+/* Patient registration button styles (similar to other buttons) */
+.patient-reg {
+    background-color:#0c8f06; /* Matches the background color of other buttons */
+    border: none; /* Remove default button border */
+    border-radius: 8px; /* Rounded corners for consistency */
+    color: #333; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 20px; /* Similar padding to other buttons for consistency */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
+    font-size: 1rem; /* Font size for readability */
+    font-weight: 400; /* Font weight for prominence */
+    margin-right: 20px; /* Add margin for spacing */
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+.patient-reg:hover {
+    background-color: #33e026; /* Hover effect color */
+    transform: scale(1.05); /* Slight scale up on hover */
+}
+
+.img-up {
+    background-color: #0c8f06; /* Matches the background color of other buttons */
+    border: none; /* Remove default button border */
+    border-radius: 8px; /* Rounded corners for consistency */
+    color: #333; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 20px; /* Similar padding to other buttons for consistency */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
+    font-size: 1rem; /* Font size for readability */
+    font-weight: 400; /* Font weight for prominence */
+    margin-right: 20px; /* Add margin for spacing */
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+.img-up:hover {
+    background-color: #33e026; /* Hover effect color */
+    transform: scale(1.05); /* Slight scale up on hover */
+}
+
+.pat-search {
+    background-color: #0c8f06; /* Matches the background color of other buttons */
+    border: none; /* Remove default button border */
+    border-radius: 8px; /* Rounded corners for consistency */
+    color: #333; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 20px; /* Similar padding to other buttons for consistency */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
+    font-size: 1rem; /* Font size for readability */
+    font-weight: 400; /* Font weight for prominence */
+    margin-right: 20px; /* Add margin for spacing */
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+.pat-search:hover {
+    background-color: #33e026; /* Hover effect color */
+    transform: scale(1.05); /* Slight scale up on hover */
+}
+
+
+.graphs {
+    background-color: #0c8f06; /* Matches the background color of other buttons */
+    border: none; /* Remove default button border */
+    border-radius: 8px; /* Rounded corners for consistency */
+    color: #333; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 20px; /* Similar padding to other buttons for consistency */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
+    font-size: 1rem; /* Font size for readability */
+    font-weight: 400; /* Font weight for prominence */
+    margin-right: 20px; /* Add margin for spacing */
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+.graphs:hover {
+    background-color: #33e026; /* Hover effect color */
+    transform: scale(1.05); /* Slight scale up on hover */
+}

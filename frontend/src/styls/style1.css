@@ -1,0 +1,197 @@
+.test > h1 {
+    padding-left: 10px;
+    margin-top: 0%;
+    font-style: italic;
+}
+
+.mylist {
+    display: flex;
+    flex-direction: column;
+}
+
+.mylist > li {
+    padding-right: 25px;
+    border: 5px;
+    border-color: aqua;
+    border-width: 10px;
+    background-color: bisque;
+    max-width: 50px;
+    padding-bottom: 10px;
+}
+
+/* Container for the staff and profile section */
+.staf-view-container1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Container for the list of doctors */
+.staf-mems-container {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+/* Container for the doctor cards */
+.staf-mem-list {
+    margin-left: 70px;
+    width: 40%; /* Takes up 40% of the width */
+    max-height: 80vh;
+    overflow-y: auto;
+    border-right: 1px solid #ccc;
+    padding-right: 10px;
+    width: 500px;
+}
+
+/* Individual doctor card */
+.card-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Card image styling */
+.card-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Text styling for card name */
+.card-container p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    width: 300px;
+}
+
+/* Profile container on the right-hand side */
+
+
+/* Activated card styling */
+.card-container.active {
+    background-color: #e0f7fa; /* Light cyan background for the active card */
+    border-color: #00acc1; /* Cyan border */
+}
+
+.background {
+    position: fixed; /* Use fixed to ensure the background stays in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/homeblur1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    filter: blur(8px); /* Adjust the blur amount */
+    z-index: -1; /* Keep the background behind the content */
+  }
+
+.card-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover; /* Ensures the image fits well in the circle */
+}
+
+.card-container p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+/* Styling for the title */
+.title1 {
+    font-size: 28px;
+    font-style: italic;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    color: #333;
+    border-bottom: 2px solid #ccc; /* A subtle underline */
+    width: 100%;
+}
+
+/* Container for the staff and profile section */
+.staf-view-container1 {
+    display: flex;
+    flex-direction: column; /* Title on top, content below */
+    padding: 20px;
+}
+
+/* Container for the staff members and profile */
+.staf-mems-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px; /* Space between staff list and profile */
+    margin-top: 20px;
+}
+
+/* Container for the list of doctors */
+.staf-mem-list {
+    width: 40%; /* Takes up 40% of the width */
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: 15px;
+    border-right: 1px solid #ccc;
+}
+
+/* Individual doctor card */
+.card-container {
+    margin: 0;
+    padding: 2px;
+}
+
+.card-container:hover {
+    background-color: #f0f8ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Activated card styling */
+.card-container.active {
+    margin: 0;
+    padding: 2px;
+    background-color: #00acc1;
+}
+
+/* Card image styling */
+.card-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+/* Card text styling */
+.card-container p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Profile container on the right-hand side */

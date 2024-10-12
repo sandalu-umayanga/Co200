@@ -1,0 +1,192 @@
+/* Container styling */
+.form-container-login {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container-login h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Form styling */
+.login-Form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label styling with new font */
+
+.login-Form label {
+  font-size: 18px;
+  color: #181818;
+  margin-bottom: 5px;
+  font-weight: 525;
+  font-family: 'Roboto', sans-serif; /* New font applied */
+}
+
+
+/* Input field styling */
+.login-Form input[type="text"],
+.login-Form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Button styling */
+.login-Form button[type="submit"] {
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-Form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styling */
+.error-message {
+  color: #d9534f;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Loader styling */
+.loader1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Responsive styling */
+@media (max-width: 400px) {
+  .form-container-login {
+      padding: 20px;
+  }
+
+  .login-Form {
+      gap: 10px;
+  }
+
+  .login-Form input[type="text"],
+  .login-Form input[type="password"] {
+      padding: 8px;
+      font-size: 14px;
+  }
+
+  .login-Form button[type="submit"] {
+      padding: 10px;
+      font-size: 14px;
+  }
+}
+
+/* DeleteAccountForm.css */
+
+.delete-account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.delete-account-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.delete-account-form label {
+  font-size: 18px;
+  color: #181818;
+  margin-bottom: 0;
+  font-weight: 525;
+  font-family: 'Roboto', sans-serif; /* New font applied */
+}
+
+
+.delete-account-form input {
+  margin-bottom: 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.delete-account-form input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+.delete-account-form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-account-form button:hover {
+  background-color: #0056b3;
+}
+
+.delete-account-form .error-message {
+  color: #ff4d4f;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.delete-account-form .success-message {
+  color: #28a745;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.background {
+  position: fixed; /* Use fixed to ensure the background stays in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/homeblur1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  filter: blur(8px); /* Adjust the blur amount */
+  z-index: -1; /* Keep the background behind the content */
+}
+
+.delete-account-form p {
+  font-size: 14px;
+  text-align: center;
+}

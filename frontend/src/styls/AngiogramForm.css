@@ -1,0 +1,256 @@
+/* Container for the entire form */
+.form-container {
+    width: 1300px;  /* Increased form width */
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main-report-body {
+    width: 800px;
+    margin: 30px auto;
+}
+.form-container h1, h2 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    background-color: #ccc;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-container label {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+.search-container button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5);
+}
+
+
+/* Styling for the table containing the form data */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.info-table td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.info-table label {
+    display: inline-block;
+    width: 100px;
+}
+
+.info-table input, 
+.info-table textarea {
+
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+
+/* Image table with placeholders */
+.image-table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.image-table td {
+    width: 50%;
+    height: 150px;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Signature at the bottom */
+.signature {
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.signature p {
+    margin: 0;
+}
+
+.paragraph {
+    text-align: left;
+    padding: 10px;
+}
+
+.paragraph > p{
+    text-align: left;
+    margin: 0;
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+.inline-input1 {
+    width: 70px !important; 
+    height: 6px;
+    display: inline-block;  
+    border: 1px solid #ccc;  
+    margin: 4px;
+}
+
+.inline-input2 {
+    width: 95% !important; 
+    height: 50px;
+    display: inline-block;  
+    border: 1px solid #ccc;  
+    margin: 4px;
+    margin-bottom: 3px;
+    padding-right: 10px;
+}
+
+.inline-input3 {
+    width: 70px !important; 
+    height: 6px;
+    display: inline-block;  
+    border: 1px solid #ccc;  
+    margin: 4px;
+}
+
+.inline-input4 {
+    width: 70px !important; 
+    height: 6px;
+    display: inline-block;  
+    border: 1px solid #ccc;  
+    margin: 4px;
+}
+
+.inline-input5 {
+    width: 70px !important; 
+    height: 6px;
+    display: inline-block;  
+    border: 1px solid #ccc;  
+    margin: 4px;
+}
+
+.inline-input6 {
+    width: 70px !important; 
+    height: 6px;
+    display: inline-block;  
+    border: 1px solid #ccc;  
+    margin: 4px;
+}
+
+.submit-report-button {
+    width: 200px; /* Smaller width */
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #628bfd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    display: block; /* Block-level element */
+    margin-left: auto;
+    margin-right: auto; /* Centers the button */
+    text-align: center; /* Centers text inside the button */
+}
+
+.submit-report-button:hover {
+    background-color: #2546ff;
+}
+
+.submit-report-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(32, 89, 234, 0.5);
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+.image-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 350px;
+    max-height: 350px;
+}
+
+.image-cell > img {
+    max-height: 150px;
+}
+
+.image-cell input {
+    margin-top: 10px;
+}
+
+.main-img {
+    width: 100%;
+}
+
+.err-msg-report {
+    background-color: #ffffff;
+    width: 700px;
+    margin: 30px auto;
+    padding-top: 10px;
+    margin-bottom: 0;
+    padding-top: 0;
+}
+
+.err-msg-report > p {
+    color: red;
+    font-size: 18px;
+}
