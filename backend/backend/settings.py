@@ -15,6 +15,7 @@ from datetime import timedelta
 from dotenv import load_dotenv
 import os
 import dj_database_url
+import sys
 
 
 load_dotenv()
@@ -100,13 +101,19 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-import dj_database_url
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default='mysql://jrrwlebl5ndwvrmz:n0njdfk8tyud3wu6@pwcspfbyl73eccbn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/iu4sqy3uztfk7fnw'
-    )
-}
+if 'test' in sys.argv or 'test_coverage' in sys.argv:  # if running tests
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': ':memory:',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='mysql://jrrwlebl5ndwvrmz:n0njdfk8tyud3wu6@pwcspfbyl73eccbn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/iu4sqy3uztfk7fnw'
+        )
+    }
 
 
 
