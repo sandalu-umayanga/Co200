@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  root: 'frontend',
+  plugins: [react()],
   build: {
-    outDir: 'dist',
+    outDir: 'dist', // Output directory for build files
+    emptyOutDir: true, // Clear the output directory before building
   },
-  publicDir: 'public',
+  publicDir: 'public', // Public directory for static assets
 });
