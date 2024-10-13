@@ -16,6 +16,9 @@ from dotenv import load_dotenv
 import os
 import dj_database_url
 import sys
+import django_heroku
+import dj_database_url
+from decouple import config
 
 
 load_dotenv()
@@ -167,3 +170,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
+# Static files settings
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
