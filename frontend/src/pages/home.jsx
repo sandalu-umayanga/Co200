@@ -41,7 +41,7 @@ export default function Home() {
             <p>Contact: 077XXXXXXXX</p>
             <p>Email: cathlab@gmail.com</p>
             <div className="b_container">
-              <button type="button" onClick={handleLogin}>
+              <button type="button" onClick={handleLogin} className="staffLogin">
                 <span>Staff Login</span>
               </button>
             </div>

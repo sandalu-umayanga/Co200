@@ -255,7 +255,7 @@ body, .home-page {
 
 
 /* From Uiverse.io by abrahamcalsin */ 
-button {
+.staffLogin {
   position: relative;
   display: flex;
   justify-content: center;
@@ -266,7 +266,7 @@ button {
   cursor: pointer;
 }
 
-button:after {
+.staffLogin:after {
   content: " ";
   width: 0%;
   height: 100%;
@@ -276,14 +276,14 @@ button:after {
   right: 0;
 }
 
-button:hover::after {
+.staffLogin:hover::after {
   right: auto;
   left: 0;
   width: 100%;
   border-radius: 5px;
 }
 
-button span {
+.staffLogin span {
   text-align: center;
   text-decoration: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -295,7 +295,7 @@ button span {
   transition: all 0.3s ease-in-out;
 }
 
-button:hover span {
+.staffLogin:hover span {
   color: #ff0000;
   font-size: 1.2rem;
   animation: scaleUp 0.3s ease-in-out;
