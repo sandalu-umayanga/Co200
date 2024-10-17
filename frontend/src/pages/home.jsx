@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styls/homepage.css"; // Ensure the path is correct
 import homeimage from "../images/home-img.png";
-import hback from "../images/hback.jpg";
 import h3back from "../images/h3back.jpg";
 
 export default function Home() {
@@ -55,16 +54,17 @@ export default function Home() {
       {/* Footer */}
       <footer className="home-footer">
         <div className="footer-content">
+          <p className="logo">CathLab</p>
           <p>&copy; 2024 Peradeniya Hospital Cath Lab Management System. All rights reserved.</p>
           <div className="social-links">
             <a href="#" aria-label="Facebook">
-              <i className="fab fa-facebook-f"></i>
+              <i className="fab fa-facebook-f">facebook</i>
             </a>
             <a href="#" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
+              <i className="fab fa-twitter">twitter</i>
             </a>
             <a href="#" aria-label="LinkedIn">
-              <i className="fab fa-linkedin-in"></i>
+              <i className="fab fa-linkedin-in">linkedin</i>
             </a>
           </div>
         </div>
