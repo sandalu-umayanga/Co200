@@ -336,7 +336,6 @@ class GetCatheterTypeReportsView(APIView):
     def get(self, request, *args, **kwargs):
         try:
             catheter_data = Reports.objects.values('catheter_type').annotate(count=Count('id')).order_by('catheter_type')
-            print("pakaya")
             serializer = CatheterTypeSerializer(catheter_data, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
