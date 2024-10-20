@@ -1,192 +1,256 @@
-/* Container styling */
+/* General Styles */
+html, body {
+  height: 100%; /* Ensure full height */
+  margin: 0; /* Remove default margin */
+}
+
+.main-container {
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Stack children vertically */
+  min-height: 100vh; /* Minimum height of the viewport */
+}
+
+.content {
+  flex: 1; /* Allow content to grow and take available space */
+}
+
+
+
+/* General styles */
 .form-container-login {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-container-login h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #333;
-}
-
-/* Form styling */
-.login-Form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  color: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Label styling with new font */
+.login-Form {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  color: #000000;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-Form h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
+}
 
 .login-Form label {
-  font-size: 18px;
-  color: #181818;
+  display: block;
+  font-size: 1rem;
+  color: #333;
   margin-bottom: 5px;
-  font-weight: 525;
-  font-family: 'Roboto', sans-serif; /* New font applied */
 }
 
-
-/* Input field styling */
-.login-Form input[type="text"],
-.login-Form input[type="password"] {
+.login-Form input {
   width: 100%;
   padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 5px;
   box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
-/* Button styling */
-.login-Form button[type="submit"] {
+.login-Form input:focus {
+  border-color: #3e66c4;
+  outline: none;
+}
+
+.login-Form button {
+  width: 100%;
   padding: 12px;
-  background-color: #007BFF;
-  color: white;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #3e66c4;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.login-Form button[type="submit"]:hover {
-  background-color: #0056b3;
+.login-Form button:hover {
+  background-color: #507dfa;
 }
 
-/* Error message styling */
+/* Error message */
 .error-message {
-  color: #d9534f;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 10px;
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
 }
 
-/* Loader styling */
+/* Loading Indicator */
 .loader1 {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
-/* Responsive styling */
-@media (max-width: 400px) {
+/* Mobile responsiveness */
+@media (max-width: 768px) {
   .form-container-login {
-      padding: 20px;
+      padding: 15px;
   }
 
   .login-Form {
-      gap: 10px;
+      padding: 15px;
   }
 
-  .login-Form input[type="text"],
-  .login-Form input[type="password"] {
+  .login-Form h1 {
+      font-size: 1.5rem;
+  }
+
+  .login-Form input {
+      font-size: 0.9rem;
       padding: 8px;
-      font-size: 14px;
   }
 
-  .login-Form button[type="submit"] {
+  .login-Form button {
       padding: 10px;
-      font-size: 14px;
+      font-size: 0.9rem;
   }
 }
 
-/* DeleteAccountForm.css */
+/* Responsive for smaller devices */
+@media (max-width: 480px) {
+  .login-Form {
+      padding: 10px;
+  }
 
-.delete-account-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  .login-Form h1 {
+      font-size: 1.2rem;
+  }
+
+  .login-Form input {
+      font-size: 0.8rem;
+      padding: 6px;
+  }
+
+  .login-Form button {
+      padding: 8px;
+      font-size: 0.8rem;
+  }
+}
+
+/* Footer Styling */
+.login-footer {
   width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
-.delete-account-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.delete-account-form label {
-  font-size: 18px;
-  color: #181818;
-  margin-bottom: 0;
-  font-weight: 525;
-  font-family: 'Roboto', sans-serif; /* New font applied */
-}
-
-
-.delete-account-form input {
-  margin-bottom: 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  width: 100%;
-}
-
-.delete-account-form input:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
-}
-
-.delete-account-form button {
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.delete-account-form button:hover {
-  background-color: #0056b3;
-}
-
-.delete-account-form .error-message {
-  color: #ff4d4f;
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-.delete-account-form .success-message {
-  color: #28a745;
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-.background {
-  position: fixed; /* Use fixed to ensure the background stays in place */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("../images/homeblur1.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat-y;
-  filter: blur(8px); /* Adjust the blur amount */
-  z-index: -1; /* Keep the background behind the content */
-}
-
-.delete-account-form p {
-  font-size: 14px;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px 0;
   text-align: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.footer-content {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content > .logo {
+  margin-left: 15px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffe600;
+}
+
+.footer-content p {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+/* Automatic scaling animation for the logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ecf0f1;
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+/* Keyframes for logo pulsing (scaling) animation */
+@keyframes logoPulse {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2);
+  }
+}
+
+
+/* Social links styling and hover animation */
+.social-links a {
+  color: #ecf0f1;
+  margin: 0 10px;
+  font-size: 1.2rem;
+  display: inline-block;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  transform: translateY(-5px); /* Make links bounce up */
+  color: #ffd700; /* Change color on hover */
+}
+
+.social-links a:hover::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #ffd700; /* Add a small underline */
+  transition: width 0.3s ease-in-out;
+  width: 100%;
+}
+
+/* Smooth bounce keyframes */
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
+}
+
+/* Optionally add some animation to the social links on page load */
+.social-links a {
+  animation: bounce 2s infinite;
+  
+}
+
+
+@media (max-width: 859px) {
+  .footer-content {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer-content > .logo {
+      margin-left: 0;
+  }
+
+  .social-links {
+      margin-top: 10px;
+  }
 }

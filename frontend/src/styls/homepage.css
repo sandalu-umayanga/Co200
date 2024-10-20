@@ -16,14 +16,14 @@ body, .home-page {
   /* Removed conflicting linear-gradient background */
 }
 
-/* Background overlay */
+/* Background overlay with semi-transparent effect */
 .background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent overlay */
+  background: rgba(255, 255, 255, 0.8);
   z-index: -1; /* Place it behind other content */
 }
 
@@ -65,7 +65,7 @@ body, .home-page {
   flex: 1; /* Allow it to grow and fill available space */
 }
 
-/* Home info section */
+/* Home info section with animation */
 .home-info {
   display: flex;
   flex-direction: row;
@@ -78,6 +78,7 @@ body, .home-page {
   animation: backgroundOpacityChange 6s ease-in-out infinite; /* Apply background opacity animation */
 }
 
+/* Animated border effect for home info section */
 .home-info::before {
   content: '';
   position: absolute;
@@ -91,7 +92,6 @@ body, .home-page {
   z-index: -1; /* Place behind the main content */
   animation: borderColorBand 8s linear infinite; /* Apply border color band animation */
 }
-
 
 .home-info-detail {
   flex: 1;
@@ -116,12 +116,11 @@ body, .home-page {
   margin-top: 20px;
 }
 
-
 .b_container button:hover {
   background-color: #3e66c4;
 }
 
-/* Image container */
+/* Image container styling */
 .image-container {
   flex: 1;
   display: flex;
@@ -141,22 +140,29 @@ body, .home-page {
 .home-footer {
   position: fixed;
   bottom: 0;
+  margin-top: auto;
   width: 100%;
-  height: 60px; /* Fixed height */
   background-color: #2c3e50;
   color: #ecf0f1;
   padding: 15px 0;
   text-align: center;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure it's above other elements */
+  align-items: center;
 }
 
 .footer-content {
-  max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content:space-between;
   align-items: center;
+}
+
+.footer-content >.logo {
+  margin-left: 15px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffe600;
 }
 
 .footer-content p {
@@ -164,97 +170,160 @@ body, .home-page {
   font-size: 0.9rem;
 }
 
+/* Automatic scaling animation for the logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ecf0f1;
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+/* Keyframes for logo pulsing (scaling) animation */
+@keyframes logoPulse {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2);
+  }
+}
+
+
+/* Social links styling and hover animation */
 .social-links a {
   color: #ecf0f1;
   margin: 0 10px;
   font-size: 1.2rem;
-  transition: color 0.3s ease;
+  display: inline-block;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative;
+  text-decoration: none;
 }
 
 .social-links a:hover {
-  color: #bdc3c7;
+  transform: translateY(-5px); /* Make links bounce up */
+  color: #ffd700; /* Change color on hover */
 }
+
+.social-links a:hover::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #ffd700; /* Add a small underline */
+  transition: width 0.3s ease-in-out;
+  width: 100%;
+}
+
+/* Smooth bounce keyframes */
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
+}
+
+/* Optionally add some animation to the social links on page load */
+.social-links a {
+  animation: bounce 2s infinite;
+  
+}
+
+
 
 /* Animations */
 @keyframes slideDown {
   from {
-    top: -100px;
-    opacity: 0;
+      top: -100px;
+      opacity: 0;
   }
   to {
-    top: -50px;
-    opacity: 1;
+      top: -50px;
+      opacity: 1;
   }
 }
 
-/* Define the keyframes for the border color band */
 @keyframes borderColorBand {
   0% {
-    background-position: 0% 50%;
+      background-position: 0% 50%;
   }
   100% {
-    background-position: 100% 50%;
+      background-position: 100% 50%;
   }
 }
 
-/* Define the keyframes for background opacity change */
 @keyframes backgroundOpacityChange {
   0%, 100% {
-    background-color: rgba(62, 98, 139, 0.95);
+      background-color: rgba(62, 98, 139, 0.95);
   }
   50% {
-    background-color: rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.3);
   }
 }
-
-
 
 @keyframes zoomIn {
   from {
-    transform: scale(0.8);
-    opacity: 0;
+      transform: scale(0.8);
+      opacity: 0;
   }
   to {
-    transform: scale(1);
-    opacity: 1;
+      transform: scale(1);
+      opacity: 1;
   }
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
   .home-header {
-    margin-bottom: 10px;
+      margin-bottom: 10px;
   }
 
   .home-container {
-    margin-top: 20px;
-    padding: 120px 20px 80px; /* Adjust top padding if header height changes */
+      margin-top: 20px;
+      padding: 120px 20px 80px; /* Adjust top padding if header height changes */
   }
 
   .home-info {
-    flex-direction: column;
+      flex-direction: column;
   }
 
-  .home-info-detail,
-  .image-container {
-    padding: 20px;
+  .home-info-detail, .image-container {
+      padding: 20px;
   }
 
   .home-header h1 {
-    font-size: 1.5rem;
+      font-size: 1.5rem;
   }
 
   .home-header p {
-    font-size: 1rem;
+      font-size: 1rem;
   }
 
   .b_container button {
-    width: 100%;
+      width: 100%;
   }
 }
 
+@media (max-width: 859px) {
+  .footer-content {
+      flex-direction: column;
+      align-items: center;
+  }
 
-/* From Uiverse.io by abrahamcalsin */ 
+  .footer-content > .logo {
+      margin-left: 0;
+  }
+
+  .social-links {
+      margin-top: 10px;
+  }
+}
+
+/* Uiverse.io Button Styling */
 .staffLogin {
   position: relative;
   display: flex;
@@ -303,14 +372,12 @@ body, .home-page {
 
 @keyframes scaleUp {
   0% {
-    transform: scale(1);
+      transform: scale(1);
   }
-
   50% {
-    transform: scale(0.95);
+      transform: scale(0.95);
   }
-
   100% {
-    transform: scale(1);
+      transform: scale(1);
   }
 }
