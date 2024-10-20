@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .serializer import UserSerializer, DoctorSerializer, DeleteAccountSerializer, PassProfSerializer, PetientSerializer, ReportsSerializer, ImageSerializer, ReportsCountSerializer
+from .serializer import UserSerializer, DoctorSerializer, DeleteAccountSerializer, PassProfSerializer, PetientSerializer, ReportsSerializer, ImageSerializer, ReportsCountSerializer,AgeDistributionSerializer,CatheterTypeSerializer
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.response import Response
@@ -27,10 +27,27 @@ class CurrentUserView(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
         try:
+            doctor = Doctors.objects.filter(username=request.user).first()
+            isnurs = False
+            isother = False
+            if doctor is None:
+                isdoc = False
+            else:
+                if doctor.profecion == "Doctor":
+                    isdoc = True
+                else:
+                    isdoc = False
+                    if doctor.profecion == "Nurse":
+                        isnurs = True
+                    elif doctor.profecion == "Other":
+                        isother = True
             user = request.user
             serializer = UserSerializer(user)
             data = serializer.data
             data['is_superuser'] = user.is_superuser
+            data['is_doctor'] = isdoc
+            data['is_nurse'] = isnurs
+            data['is_other'] = isother
             return Response(data)
         except Exception as e:
             print(f"Error: {e}")
@@ -233,11 +250,94 @@ class ReportByPersonView(APIView):
 class GetReportsView(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            # Aggregate data by report date, counting the number of procedures/reports
             reports = Reports.objects.values('date').annotate(procedure_count=Count('id')).order_by('date')
             print(reports)  
             serializer = ReportsCountSerializer(reports, many=True)
 
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+class AgeDistributionView(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            patients = Patients.objects.all()
+            current_year = date.today().year
+            age_groups = {
+                '0-5': 0,
+                '5-10': 0,
+                '10-15': 0,
+                '15-20': 0,
+                '20-25': 0,
+                '25-30': 0,
+                '30-35': 0,
+                '35-40': 0,
+                '40-45': 0,
+                '45-50': 0,
+                '50-55': 0,
+                '55-60': 0,
+                '60-65': 0,
+                '65-70': 0,
+                '70-75': 0,
+                '75++': 0,
+            }
+
+            for patient in patients:
+                patient_age = current_year - patient.birth.year
+
+                if patient_age <= 5:
+                    age_groups['0-5'] += 1
+                elif 6 <= patient_age <= 10:
+                    age_groups['5-10'] += 1
+                elif 11 <= patient_age <= 15:
+                    age_groups['10-15'] += 1
+                elif 16 <= patient_age <= 20:
+                    age_groups['15-20'] += 1
+                elif 21 <= patient_age <= 25:
+                    age_groups['20-25'] += 1
+                elif 26 <= patient_age <= 30:
+                    age_groups['25-30'] += 1
+                elif 31 <= patient_age <= 35:
+                    age_groups['30-35'] += 1
+                elif 36 <= patient_age <= 40:
+                    age_groups['35-40'] += 1
+                elif 41 <= patient_age <= 45:
+                    age_groups['40-45'] += 1
+                elif 46 <= patient_age <= 50:
+                    age_groups['45-50'] += 1
+                elif 51 <= patient_age <= 55:
+                    age_groups['50-55'] += 1
+                elif 56 <= patient_age <= 60:
+                    age_groups['55-60'] += 1
+                elif 61 <= patient_age <= 65:
+                    age_groups['60-65'] += 1
+                elif 66 <= patient_age <= 70:
+                    age_groups['65-70'] += 1
+                elif 71 <= patient_age <= 75:
+                    age_groups['70-75'] += 1
+                else:
+                    age_groups['75++'] += 1
+
+            age_distribution = [
+                {'age_group': group, 'patient_count': count} 
+                for group, count in age_groups.items()
+            ]
+        
+            serializer = AgeDistributionSerializer(age_distribution, many=True)
+            
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class GetCatheterTypeReportsView(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            catheter_data = Reports.objects.values('catheter_type').annotate(count=Count('id')).order_by('catheter_type')
+            print("pakaya")
+            serializer = CatheterTypeSerializer(catheter_data, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

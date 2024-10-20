@@ -84,3 +84,11 @@ class ReportsSerializer(serializers.ModelSerializer):
 class ReportsCountSerializer(serializers.Serializer):
     date = serializers.DateField()
     procedure_count = serializers.IntegerField()
+
+class AgeDistributionSerializer(serializers.Serializer):
+    age_group = serializers.CharField()  
+    patient_count = serializers.IntegerField()  
+
+class CatheterTypeSerializer(serializers.Serializer):
+    catheter_type = serializers.CharField()
+    count = serializers.IntegerField()

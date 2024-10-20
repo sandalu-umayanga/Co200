@@ -18,6 +18,8 @@ urlpatterns = [
     path("upload-images/", views.UploadImagesView.as_view(), name="image-upload"),
     path("images/", views.ImageByHosIDView.as_view() , name="pak"),
     path("oldreports/", views.ReportByPersonView.as_view(), name="old-reports"),
-    path('reports/', views.GetReportsView.as_view(), name='get-reports')
+    path('reports/', views.GetReportsView.as_view(), name='get-reports'),
+    path('AgeDistribution/reports/', views.AgeDistributionView.as_view(), name='get-age-reports'),
+    path('CatheterType/reports/', views.GetCatheterTypeReportsView.as_view(), name='catheter-type-reports'),
 ] + router.urls  # Include the router URLs automatically
 

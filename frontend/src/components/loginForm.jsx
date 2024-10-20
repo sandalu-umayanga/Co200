@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom"
 import LoadingIndicator from "./loading"
 import "../styls/loginpage.css"
 
-
-function LoginForm(props){
-
+function LoginForm(props) {
     const navigate = useNavigate()
     const [FormData, SetFormData] = React.useState({
         username: "",
@@ -23,33 +21,45 @@ function LoginForm(props){
         const {name, value} = event.target
         SetFormData(prevdata => ({
             ...prevdata,
-            [name] : value
+            [name]: value
         }))
     }
+
+    // Regular expression to check for strong password
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/
 
     const handleSubmit = async (event) => {
         SetLoading(true)
         event.preventDefault();
 
-        try{
+        try {
             const username = FormData.username
             const password = FormData.password
             const confirm = FormData.confirmPassword
-            if (props.method === "login"){
+            
+            if (props.method == "register"){
+                if (!passwordRegex.test(password)) {
+                    SetError("Password must be at least 8 characters long, include uppercase and lowercase letters, a number, and a special character.")
+                    SetLoading(false)
+                    return
+                }
+            }
+
+            if (props.method === "login") {
                 const res = await api.post(props.rout, {username, password})
                 localStorage.setItem(ACCESS_TOKEN, res.data.access)
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh)
                 navigate("/home")
-            }else{
-                if (password === confirm){
+            } else {
+                if (password === confirm) {
                     const res = await api.post(props.rout, {username, password})
                     navigate("/home")
-                }else{
+                } else {
                     SetError("Password and Confirm Password didn't match")
                 }
             }
-        } catch (error){
-            if (error.response){
+        } catch (error) {
+            if (error.response) {
                 switch (error.response.status) {
                     case 400:
                         SetError("There is a user with this username");
@@ -71,23 +81,22 @@ function LoginForm(props){
                         break;
                 }
             }
-        }   
-        finally {
+        } finally {
             SetLoading(false)
         }
     }
 
-    return(
+    return (
         <div className="form-container-login">
             <h1>{title}</h1>
             <form onSubmit={handleSubmit} className="login-Form">
                 <label htmlFor={id + "--username"}>User name</label>
-                <input 
+                <input
                     type="text"
                     name="username"
                     onChange={handleChange}
                     value={FormData.username}
-                    id = {id + "--username"}
+                    id={id + "--username"}
                     required
                 />
                 <label htmlFor={id + "--password"}>Password</label>
@@ -96,22 +105,24 @@ function LoginForm(props){
                     name="password"
                     onChange={handleChange}
                     value={FormData.password}
-                    id = {id + "--password"}
+                    id={id + "--password"}
                     required
                 />
-                {props.method === "register" && <div>
-                    <label htmlFor={id + "--conf"}>Conferm Password</label>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        onChange={handleChange}
-                        value={FormData.confirmPassword}
-                        id = {id + "--conf"}
-                        required
-                    />
-                </div> }
+                {props.method === "register" && (
+                    <div>
+                        <label htmlFor={id + "--conf"}>Confirm Password</label>
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            onChange={handleChange}
+                            value={FormData.confirmPassword}
+                            id={id + "--conf"}
+                            required
+                        />
+                    </div>
+                )}
                 {Loading && <div className="loader1"><LoadingIndicator /></div>}
-                {Error!="" && <div className="error-message">{Error}</div>}
+                {Error !== "" && <div className="error-message">{Error}</div>}
                 <button type="submit">{title}</button>
             </form>
         </div>

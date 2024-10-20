@@ -27,6 +27,7 @@ export default function P_search() {
     const handleResultClick = (patient) => {
         setSearchTerm(patient.national_id);
         setSelectedPatient(patient);
+        setReports([])
         setShowPopup(false); // Hide popup once a patient is selected
     };
 
@@ -35,24 +36,28 @@ export default function P_search() {
     };
 
     const handlereports = async () => {
-        try {
-            const response = await api.post("/api/oldreports/", { person_id: selectedPatient.id });
-            setReports(response.data);
-            setCurrentReportIndex(0);  // Reset index when new reports are fetched
-        } catch (error) {
-            console.error("Error fetching reports:", error);
-        }
-
-        try {
-            const response1 = await api.post(`/api/images/`, { hos_id: selectedPatient.hospital_id });
-            const imageUrls = response1.data.length ? response1.data[0].report_imgs : [];
-            const formattedImages = imageUrls.map(imgUrl => {
-                const imageUrl = imgUrl.startsWith('/') ? imgUrl.substring(1) : imgUrl;
-                return `${import.meta.env.VITE_API_URL}${imageUrl}`;
-            });
-            setImages(formattedImages);
-        } catch (error) {
-            console.error("Error fetching images:", error);
+        if (reports.length == 0){
+            try {
+                const response = await api.post("/api/oldreports/", { person_id: selectedPatient.id });
+                setReports(response.data);
+                setCurrentReportIndex(0);  // Reset index when new reports are fetched
+            } catch (error) {
+                console.error("Error fetching reports:", error);
+            }
+    
+            try {
+                const response1 = await api.post(`/api/images/`, { hos_id: selectedPatient.hospital_id });
+                const imageUrls = response1.data.length ? response1.data[0].report_imgs : [];
+                const formattedImages = imageUrls.map(imgUrl => {
+                    const imageUrl = imgUrl.startsWith('/') ? imgUrl.substring(1) : imgUrl;
+                    return `${import.meta.env.VITE_API_URL}${imageUrl}`;
+                });
+                setImages(formattedImages);
+            } catch (error) {
+                console.error("Error fetching images:", error);
+            }
+        }else{
+            setReports([])
         }
     };
 
@@ -69,87 +74,90 @@ export default function P_search() {
     };
 
     return (
-        <nav className="search-bar">
-            {/* Buttons to Select Search Criterion */}
-            <div className="button-set1">
-                <h1>Search by :</h1>
-                <button className="national_id-button" onClick={() => handleSelect("national_id")}>National ID</button>
-                <button className="hospital_id-button" onClick={() => handleSelect("hospital_id")}>Hospital ID</button>
-                <button className="name-button" onClick={() => handleSelect("name")}>Name</button>
-            </div>
-
-            {/* Search Input */}
-            <div className="search-container">
-                <input
-                    type="text"
-                    placeholder={`Search by ${searchBy.replace('_', ' ').toUpperCase()}...`}
-                    value={searchTerm}
-                    onChange={handleSearch}
-                    className="search-input"
-                />
-                {showPopup && searchResults.length > 0 && (
-                    <div className="search-popup">
-                        {searchResults.map((result) => (
-                            <div key={result.id} className="search-result" onClick={() => handleResultClick(result)}>
-                                National_ID : {result.national_id} -- Hospital_ID : {result.hospital_id} -- Name: {result.name}
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
-
-            {!showPopup && selectedPatient && (
-                <div className="selected-patient">
-                    <table className="patient-table">
-                        <tbody>
-                            <tr>
-                                <td><strong>National ID:</strong></td>
-                                <td>{selectedPatient.national_id}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Hospital ID:</strong></td>
-                                <td>{selectedPatient.hospital_id}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Name:</strong></td>
-                                <td>{selectedPatient.name}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Date of Birth:</strong></td>
-                                <td>{selectedPatient.birth}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Address:</strong></td>
-                                <td>{selectedPatient.address}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Contact:</strong></td>
-                                <td>{selectedPatient.contact}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Email:</strong></td>
-                                <td>{selectedPatient.email ? selectedPatient.email : "N/A"}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button onClick={handlereports}>Fetch Reports</button>
-
-                    {reports.length > 0 && (
-                        <div className="report-view">
-                            {/* Navigation buttons */}
-                            <div className="navigation-buttons">
-                                <button onClick={handlePreviousReport} disabled={currentReportIndex === 0}>Previous</button>
-                                <button onClick={handleNextReport} disabled={currentReportIndex === reports.length - 1}>Next</button>
-                            </div>
-                            <AngiogramReportView1
-                                rep_data={reports[currentReportIndex]}
-                                pat_data={selectedPatient}
-                                image_files={images}
-                            />
+        <div className="fpg-split">
+            {/* Search Bar */}
+            <nav className="search-bar">
+                <div className="button-set1">
+                    <h1>Search by :</h1>
+                    <button className="national_id-button" onClick={() => handleSelect("national_id")}>National ID</button>
+                    <button className="hospital_id-button" onClick={() => handleSelect("hospital_id")}>Hospital ID</button>
+                    <button className="name-button" onClick={() => handleSelect("name")}>Name</button>
+                </div>
+    
+                <div className="search-container">
+                    <input
+                        type="text"
+                        placeholder={`Search by ${searchBy.replace('_', ' ').toUpperCase()}...`}
+                        value={searchTerm}
+                        onChange={handleSearch}
+                        className="search-input"
+                    />
+                    {showPopup && searchResults.length > 0 && (
+                        <div className="search-popup">
+                            {searchResults.map((result) => (
+                                <div key={result.id} className="search-result" onClick={() => handleResultClick(result)}>
+                                    National_ID : {result.national_id} -- Hospital_ID : {result.hospital_id} -- Name: {result.name}
+                                </div>
+                            ))}
                         </div>
                     )}
                 </div>
-            )}
-        </nav>
+            </nav>
+    
+            {/* Patient Details and Reports Section */}
+            <div className="details-report-section">
+                {!showPopup && selectedPatient && (
+                    <div className="selected-patient">
+                        <table className="patient-table">
+                            <tbody>
+                                <tr>
+                                    <td><strong>National ID:</strong></td>
+                                    <td>{selectedPatient.national_id}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hospital ID:</strong></td>
+                                    <td>{selectedPatient.hospital_id}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Name:</strong></td>
+                                    <td>{selectedPatient.name}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Date of Birth:</strong></td>
+                                    <td>{selectedPatient.birth}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Address:</strong></td>
+                                    <td>{selectedPatient.address}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Contact:</strong></td>
+                                    <td>{selectedPatient.contact}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email:</strong></td>
+                                    <td>{selectedPatient.email ? selectedPatient.email : "N/A"}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button onClick={handlereports}>Show Reports</button>
+                    </div>
+                )}
+                {reports.length > 0 && (
+                    <div className="report-view">
+                        <div className="navigation-buttons">
+                            <button onClick={handlePreviousReport} disabled={currentReportIndex === 0}>Previous</button>
+                            <button onClick={handleNextReport} disabled={currentReportIndex === reports.length - 1}>Next</button>
+                        </div>
+                        <AngiogramReportView1
+                            rep_data={reports[currentReportIndex]}
+                            pat_data={selectedPatient}
+                            image_files={images}
+                        />
+                    </div>
+                )}
+            </div>
+        </div>
     );
+    
 }

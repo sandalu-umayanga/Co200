@@ -128,3 +128,120 @@ button:hover {
 .navigation-buttons button:hover:enabled {
     background-color: #0056b3;
 }
+
+
+.fpg-split {
+    display: flex;
+    flex-direction: column;
+}
+
+.details-report-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 150px;
+}
+
+.selected-patient {
+    width: 45%; /* Adjusted width for patient details */
+    max-width: 600px;
+}
+
+.report-view {
+    width: 50%; /* Adjusted width for the report section */
+    margin-left: 20px; /* Space between patient details and reports */
+    margin-right: 150px;
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.navigation-buttons button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.navigation-buttons button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.navigation-buttons button:hover:enabled {
+    background-color: #0056b3;
+}
+
+.fpg-split {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.details-report-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.selected-patient {
+    width: 45%; /* Adjusted width for patient details */
+    max-width: 600px;
+}
+
+.report-view {
+    width: 50%; /* Adjusted width for the report section */
+    margin-left: 20px; /* Space between patient details and reports */
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.navigation-buttons button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.navigation-buttons button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.navigation-buttons button:hover:enabled {
+    background-color: #0056b3;
+}
