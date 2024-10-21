@@ -18,6 +18,8 @@ import Protected from "./components/protected"
 import Graphs from "./pages/graphs"
 import Footer from "./components/Footer"
 import "./styls/App.css"
+import h3back from "./images/h3back.jpg";
+
 
 
 function Logout(){
@@ -30,7 +32,14 @@ function App() {
   
   return (
     <div className="app-container">
-      <div className="app-content">
+      <div className="app-content"
+       style={{
+        backgroundImage: `url(${h3back})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+
+      }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

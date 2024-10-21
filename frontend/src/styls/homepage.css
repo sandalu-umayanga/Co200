@@ -6,7 +6,7 @@
 }
 
 /* Body and Home Page Styling */
-body, .home-page {
+.home-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -59,7 +59,6 @@ body, .home-page {
   justify-content: center;
   align-items: center;
   padding: 100px 20px 80px; /* Top padding = header height + spacing, Bottom padding = footer height + spacing */
-  max-width: 1200px;
   margin: 0 auto;
   flex: 1; /* Allow it to grow and fill available space */
 }
@@ -279,4 +278,9 @@ body, .home-page {
   100% {
       transform: scale(1);
   }
+}
+
+.background1 {
+  display: flex;
+  justify-content: center;
 }

@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styls/homepage.css"; // Ensure the path is correct
 import homeimage from "../images/home-img.png";
-import h3back from "../images/h3back.jpg";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -14,13 +13,6 @@ export default function Home() {
   return (
     <div
       className="home-page"
-      style={{
-        backgroundImage: `url(${h3back})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-
-      }}
     >
 
       {/* Background overlay */}

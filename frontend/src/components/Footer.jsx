@@ -1,26 +1,52 @@
 import React from 'react';
-import '../styls/Footer.css'; // Separate CSS file for styling
+import '../styls/Footer.css';
 
-const Footer = () => {
+import fb from '../img/fb.svg';
+import ig from '../img/ig.svg';
+import tt from '../img/tt.svg';
+import li from '../img/li.svg';
+import env from '../img/env.png';
+import phone from '../img/phone.png';
+import loc from '../img/loc.png';
+
+
+export default function Footer() {
   return (
-    <footer className="home-footer">
+    <footer className="footer">
       <div className="footer-content">
-        <p className="logo">CathLab</p>
-        <p>&copy; 2024 Peradeniya Hospital Cath Lab Management System. All rights reserved.</p>
-        <div className="social-links">
-          <a href="#" aria-label="Facebook">
-            <i className="fab fa-facebook-f">Facebook</i>
-          </a>
-          <a href="#" aria-label="Twitter">
-            <i className="fab fa-twitter">Twitter</i>
-          </a>
-          <a href="#" aria-label="LinkedIn">
-            <i className="fab fa-linkedin-in">LinkedIn</i>
-          </a>
+        <div className="footer-section about">
+          <h2>SmartHub</h2>
+          <p>Simplifying IoT Management.</p>
+          <div className="contact">
+            <span><img src={phone} alt='phone'/> +94 70 2 4 8 16 32</span>
+            <span><img src={env} alt='env'/> support@smarthub.com</span>
+            <span><img src={loc} alt='loc'/> 123 Innovation Drive, Tech City, TX 78901, USA</span>
+          </div>
         </div>
+
+        <div className="footer-section">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-section social">
+          <h2>Follow Us</h2>
+          <div className="social-links">
+            <a href="https://www.facebook.com"><img src={fb} alt="fb" /></a>
+            <a href="https://www.twitter.com"><img src={tt} alt="tt" /></a>
+            <a href="https://www.linkedin.com"><img src={li} alt="li" /></a>
+            <a href="https://www.instagram.com"><img src={ig} alt="ig" /></a>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        &copy; {new Date().getFullYear()} SmartHub. All rights reserved.
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

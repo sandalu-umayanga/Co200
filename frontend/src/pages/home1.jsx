@@ -8,8 +8,9 @@ export default function Home1() {
     return (
       <div>
         <Navbar />
-        <div className="background1"></div>
-        <P_search />
+        <div className="background1">
+         <P_search />
+        </div>
       </div>
   )
 }

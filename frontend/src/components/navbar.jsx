@@ -15,12 +15,18 @@ export default function Navbar() {
     const [isAccount, setIsAccount] = useState(false);
     const [image, setImage] = useState(blank_user);
     const[dropStaff, setDropStaff] = useState(false)
+    const [is_doc, set_is_doc] = useState(false)
+    const [is_nur, set_is_nur] = useState(false)
+    const [is_other, set_is_other] = useState(false)
 
     const fetchUser = async () => {
         try {
             const res = await api.get("/api/user/now/");
             setUser(res.data.username);
             setIsSuperUser(res.data.is_superuser);
+            set_is_doc(res.data.is_doctor)
+            set_is_nur(res.data.is_nurse)
+            set_is_other(res.data.is_other)
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
@@ -142,10 +148,10 @@ export default function Navbar() {
                     </div>
                 )}
             </div>
-            <button onClick={handleimgup} className="img-up">Images</button>
-            <button onClick={handlesearch} className="pat-search">Report</button>
+            {is_doc && (<button onClick={handlesearch} className="pat-search">Report</button>)}
+            {(is_doc || is_nur) && (<button onClick={handleimgup} className="img-up">Images</button>)}
+            {(is_doc || is_nur || is_other) && (<button onClick={handlereg} className="patient-reg">Patient Register</button>)}
             <button onClick={handlegraph} className="graphs">Analyse</button>
-            <button onClick={handlereg} className="patient-reg">Patient Register</button>
             <div className="user-section" ref={isdrop}>
                 <button className="user-name" onClick={toggleDropdown}>
                     <img src={image} className="nav-prof-pic" alt="User Profile" />

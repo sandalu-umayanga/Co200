@@ -1,24 +1,38 @@
 /* patients.css */
 
 .search-bar {
+    padding: 20px;
     display: flex;
+    max-width: 900px;
+    width: 100%;
+    min-height: 500px;
+    border-radius: 15px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 20px;
+    background: linear-gradient(45deg, #001f3f, #0f2944, #001f3f); /* Gradient Background */
+    animation: backgroundOpacityChange 6s ease infinite; /* Apply background opacity animation */
+    opacity: 0.83;
+
 }
 
 .button-set1 {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .button-set1 h1 {
     margin-bottom: 10px;
-    color: #333;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
 }
 
+/* patients.css */
+
 button {
-    background-color: #7083ff;
+    background-color: #2959a0;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -29,52 +43,80 @@ button {
 }
 
 button:hover {
-    background-color: #353fff;
+    background-color: #2f2929;
 }
 
-.search-container {
+/* New clicked state */
+button.clicked {
+    background-color: #1b1c1c;
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.2); /* Give a pressed look */
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.psearch-container {
+    padding: 0;
     position: relative;
-    width: 400px;
+    width: 100%;
     max-width: 600px;
 }
 
 .search-input {
-    width: 400px;
-    border: 1px solid #ccc;
+    padding: 15px !important;
+    margin: 0 !important;
+    width: 100%;
     border-radius: 5px;
     font-size: 16px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
 }
 
 .search-popup {
     position: absolute;
+    margin-top: 15px;
     top: 100%;
     left: 0;
     width: 100%;
     max-height: 200px;
     overflow-y: auto;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .search-result {
     padding: 10px;
-    border-bottom: 1px solid #eee;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .search-result:hover {
-    background-color: #f1f1f1;
+    background-color: #4bb7ff !important;
 }
 
 .selected-patient {
     margin-top: 20px;
     width: 100%;
     max-width: 600px;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .patient-table {
@@ -88,6 +130,7 @@ button:hover {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    font-family: 'Arial', sans-serif;
 }
 
 .patient-table th {
@@ -106,7 +149,8 @@ button:hover {
 .navigation-buttons {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px; /* Space between buttons and report */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .navigation-buttons button {
@@ -115,9 +159,10 @@ button:hover {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    margin: 0 10px; /* Spacing between buttons */
+    margin: 0 10px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .navigation-buttons button:disabled {
@@ -127,4 +172,17 @@ button:hover {
 
 .navigation-buttons button:hover:enabled {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.navigation-buttons button:active {
+    transform: scale(0.98);
+}
+
+.report-container {
+    margin:0 !important;
+}
+
+.report-view{
+    width: 100% !important;
 }
