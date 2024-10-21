@@ -26,9 +26,6 @@ function LoginForm(props) {
     }));
   }
 
-  // Regular expression to check for strong password (only for registration)
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
-
   const handleSubmit = async (event) => {
     SetLoading(true);
     event.preventDefault();
@@ -37,17 +34,6 @@ function LoginForm(props) {
       const username = FormData.username;
       const password = FormData.password;
       const confirm = FormData.confirmPassword;
-
-      if (props.method === "register") {
-        if (!passwordRegex.test(password)) {
-          SetError(
-            "Password must be at least 8 characters long, include uppercase and lowercase letters, a number, and a special character."
-          );
-          SetLoading(false);
-          return;
-        }
-      }
-
       if (props.method === "login") {
         const res = await api.post(props.rout, { username, password });
         localStorage.setItem(ACCESS_TOKEN, res.data.access);
@@ -126,7 +112,7 @@ function LoginForm(props) {
             />
             {props.method === "register" && (
               <div>
-                <label htmlFor={id + "--conf"}>Confirm Password</label>
+                <label htmlFor={id + "--conf"}>Conferm Password</label>
                 <input
                   type="password"
                   name="confirmPassword"
@@ -142,30 +128,10 @@ function LoginForm(props) {
                 <LoadingIndicator />
               </div>
             )}
-            {Error !== "" && <div className="error-message">{Error}</div>}
+            {Error != "" && <div className="error-message">{Error}</div>}
             <button type="submit">{title}</button>
           </form>
         </div>
-        <footer className="login-footer">
-          <div className="footer-content">
-            <p className="logo">CathLab</p>
-            <p>
-              &copy; 2024 Peradeniya Hospital Cath Lab Management System. All
-              rights reserved.
-            </p>
-            <div className="social-links">
-              <a href="#" aria-label="Facebook">
-                <i className="fab fa-facebook-f">facebook</i>
-              </a>
-              <a href="#" aria-label="Twitter">
-                <i className="fab fa-twitter">twitter</i>
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                <i className="fab fa-linkedin-in">linkedin</i>
-              </a>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   );

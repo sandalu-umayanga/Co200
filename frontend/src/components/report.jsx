@@ -195,7 +195,7 @@ function Report() {
             const response = await api.post("api/report/", {
                 Indication: formData.Indication,
                 BHT: formData.BHT,
-                oparators: doctor, 
+                oparators: doctor, // Changed to 'oparators'
                 Vascular_Access: formData.Vascular,
                 Catheters: formData.Catheters,
                 catheter_type: formData.catheter_type,
@@ -204,7 +204,7 @@ function Report() {
                 baloon_presure: formData.baloon_presure,
                 stent_name: formData.stent_name,
                 stent_pressure: formData.stent_pressure,
-                hospital_id: hos_id 
+                hospital_id: hos_id // Include this if required by your backend
             });
             console.log("Report submitted successfully:", response.data);
             alert("Report saved successfully!");

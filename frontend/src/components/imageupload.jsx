@@ -22,13 +22,6 @@ function ImageUpload() {
     const formData = new FormData();
     formData.append('hos_id', hosId);
 
-    if (images.length == 0)
-    {
-      setError("NO IMAGES SELECTED")
-      return;
-    }
-
-
     for (let i = 0; i < images.length; i++) {
       formData.append('report_img', images[i]);
     }
@@ -43,6 +36,7 @@ function ImageUpload() {
         setError(response.data.err)
       }
       else{
+        alert("ok")
         setSuccess(`Images uploaded successfully for hospital ID ${hosId}!`);
         setError(null);
         setImages([]);

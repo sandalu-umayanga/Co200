@@ -1,5 +1,4 @@
 /* Navbar container */
-/* Remove default body margins and paddings */
 body {
     margin: 0;
     padding: 0;
@@ -7,309 +6,203 @@ body {
 
 /* Navbar container */
 .nav-bar {
-    width: 100%; /* Ensure navbar spans the full width of the viewport */
-    margin: 0; /* Remove any default margin */
-    padding: 10px 20px; /* Padding around the navbar */
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
     padding-right: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Space between home button and username */
-    background-color: #002b36; /* Light grey background for better visibility */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    position: relative; /* To allow absolute positioning of dropdown */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
+    justify-content: space-between;
+    background: linear-gradient(to right, rgb(3, 28, 95), rgb(203, 224, 255));
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1000;
+    flex-wrap: wrap;
+    transition: background-color 0.5s ease-in-out;
 }
-
 
 /* Home button styles */
 .home-icon {
     display: flex;
-    align-items: center; /* Align icon and text vertically */
-    background-color:#0c8f06;
-    border: none; /* Remove default button styles */
+    align-items: center;
+    background-color: #0055FF; /* Primary blue */
+    border: none;
     border-radius: 8px;
     cursor: pointer;
-    padding: 5px 10px; /* Add some padding for better click area */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    padding: 5px 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .home-icon p {
     font-size: 1rem;
-    color: #ffffff;
+    color: #FFFFFF; /* White text */
     font-weight: bolder;
 }
 
 .home-icon:hover {
-    background-color: #33e026; /* Light hover effect */
-    border-radius: 8px; /* Rounded corners on hover */
-    transform: scale(1.05);
+    background-color: #003cb3; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly larger on hover */
 }
 
-/* Image within the home button */
 .nav-image {
     max-width: 40px;
     max-height: 40px;
-    margin-right: 8px; /* Space between image and text */
+    margin-right: 8px;
     border-radius: 100%;
 }
 
-/* Username styling */
+/* Responsive dropdown for user and staff menu */
+.user-section, .staff-container {
+    position: relative;
+}
+
+/* User dropdown button */
 .user-name {
     display: flex;
-    margin-right: 10px;
-    align-items: center; /* Align icon and text vertically */
-    background-color:#0c8f06;
-    border: none; /* Remove default button styles */
+    align-items: center;
+    background-color: #0055FF; /* Primary blue */
+    border: none;
     border-radius: 8px;
     cursor: pointer;
-    padding: 5px 10px; /* Add some padding for better click area */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    padding: 5px 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .user-name p {
     font-size: 1rem;
-    color: #ffffff;
+    color: #FFFFFF; /* White text */
     font-weight: bolder;
-}
-/* Adjust the profile image within the user-name button */
-.nav-prof-pic {
-    width: 40px;
-    height: 40px;
-    margin-right: 15px; /* Space between image and text */
-    border-radius: 100%;
-}
-
-/* Style for the user name text */
-.user-name span {
-    display: flex;
-    align-items: center; /* Align text vertically with image */
 }
 
 .user-name:hover {
-    background-color: #33e026; /* Light hover effect */
-    border-radius: 8px; /* Rounded corners on hover */
-    transform: scale(1.05);
+    background-color: #003cb3; /* Darker blue */
+    transform: scale(1.1); /* Hover animation */
 }
-/* User section to keep dropdown aligned */
-.user-section {
-    position: relative; /* Set relative position for dropdown positioning */
+
+/* Profile image in the user button */
+.nav-prof-pic {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 100%;
 }
 
 /* Dropdown menu styles */
-.dropdown-menu {
+.dropdown-menu, .staff-dropdown {
     margin-top: 12px;
-    position: absolute; /* Position absolutely to appear outside of nav-bar */
-    top: 100%; /* Position directly below the user-name button */
-    right: 0; /* Align right edge with the right edge of the parent container */
-    background-color: white; /* Background color for the dropdown */
-    border: 1px solid #ddd; /* Border around the dropdown */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    border-radius: 5px; /* Rounded corners */
-    z-index: 1000; /* Ensure dropdown is above other elements */
-    min-width: 150px; /* Minimum width for dropdown */
-    max-height: 300px; /* Limit height to prevent overflow */
-    overflow-y: auto; /* Scroll if content exceeds max-height */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #FFFFFF; /* White background for dropdown */
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    min-width: 150px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
 }
-/* Dropdown menu items styling */
-/* Dropdown item styles */
+
+.user-section:hover .dropdown-menu,
+.staff-container:hover .staff-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Dropdown items */
 .dropdown-item {
-    font-family: 'Roboto', sans-serif; /* Use a clean, modern sans-serif font */
-    text-align: center;
-    font-size: 17px;
-    margin: 0;
-    padding: 10px 0; /* Adjust padding for better spacing */
+    padding: 10px 15px;
     cursor: pointer;
-    color: #333; /* Text color */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease; /* Smooth transition for hover */
-}
-
-/* Add hover effect for dropdown items */
-.dropdown-item:hover {
-    background-color: #6175f8; /* Light background color on hover */
-}
-
-
-
-/* Register button styles */
-.Register-button {
-    background-color:#0c8f06; /* Matches the background color of other buttons */
-    border: none; /* Remove default button border */
-    border-radius: 8px; /* Rounded corners for consistency */
-    color: #333; /* Text color for contrast */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 1rem; /* Font size for readability */
-    font-weight: 400; /* Font weight for prominence */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
-    margin-left: 20px;
-    margin-right: auto;
-    padding: 5px 10px;
-    padding: 20px;
-    font-size: 1rem;
-    color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
     font-weight: bolder;
+    color: #000000; /* Black text */
+}
+
+.dropdown-item:hover {
+    background-color: #0055FF; /* Blue hover */
+    color: #FFFFFF; /* White text on hover */
+}
+
+/* Staff dropdown styles */
+.staff-container .staff-dropdown {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Register button */
+.Register-button {
+    background-color: #0055FF; /* Primary blue */
+    border: none;
+    border-radius: 8px;
+    color: #FFFFFF; /* White text */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bolder;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .Register-button:hover {
-    background-color: #33e026; /* Hover effect color */
-    transform: scale(1.05); /* Slight scale up on hover */
+    background-color: #003cb3; /* Darker blue */
+    transform: scale(1.05);
 }
 
-/* Staff button styles (similar padding and alignment as the Home button) */
+/* Staff button */
 .staf-view {
     display: flex;
-    align-items: center; /* Align text vertically */
-    background-color: #0c8f06; /* Matches the background color of other buttons */
-    border: none; /* Remove default button border */
-    border-radius: 8px; /* Rounded corners for consistency */
-    color: #333; /* Text color */
-    cursor: pointer; /* Pointer cursor on hover */
-    padding: 20px; /* Similar padding to the home button for a consistent look */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
-    font-size: 1rem; /* Font size for readability */
-    font-weight: 400; /* Font weight for prominence */
-    margin-left: auto;
-    font-size: 1rem;
-    color: #ffffff;
+    align-items: center;
+    background-color: #0055FF; /* Primary blue */
+    border: none;
+    border-radius: 8px;
+    color: #FFFFFF; /* White text */
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     font-weight: bolder;
-   /* margin-right: 20px;*/
-
 }
 
 .staf-view:hover {
-    background-color: #33e026; /* Hover effect color */
-    transform: scale(1.05); /* Slight scale up on hover */
+    background-color: #003cb3; /* Darker blue */
+    transform: scale(1.05);
 }
 
-/* Staff container to keep dropdown aligned */
-.staff-container {
-    position: relative; /* Set relative position for dropdown positioning */
-    margin-left: auto;
-    margin-right: 20px;
-}
+/* Responsive styling for mobile */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-/* Staff dropdown menu styles */
-.staff-dropdown {
-    margin-top: 12px;
-    position: absolute; /* Position absolutely to appear outside of nav-bar */
-    top: 100%; /* Position directly below the staf-view button */
-    left: 50%; /* Start dropdown in the center horizontally */
-    transform: translateX(-50%); /* Center the dropdown relative to the staf-view button */
-    background-color: white; /* Background color for the dropdown */
-    border: 1px solid #ddd; /* Border around the dropdown */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    border-radius: 5px; /* Rounded corners */
-    z-index: 1000; /* Ensure dropdown is above other elements */
-    min-width: 150px; /* Minimum width for dropdown */
-    max-height: 300px; /* Limit height to prevent overflow */
-    overflow-y: auto; /* Scroll if content exceeds max-height */
-}
+    .home-icon {
+        margin-bottom: 10px;
+        width: 100%;
+    }
 
-/* Staff dropdown items styling */
-.staff-dropdown p {
-    font-family: 'Roboto', sans-serif; /* Use a clean, modern sans-serif font */
-    text-align: center;
-    font-size: 17px;
-    margin: 0;
-    padding: 10px 0; /* Adjust padding for better spacing */
-    cursor: pointer;
-    color: #333; /* Text color */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease; /* Smooth transition for hover */
-}
+    .Register-button,
+    .staf-view {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 
-/* Add hover effect for staff dropdown items */
-.staff-dropdown p:hover {
-    background-color: #6175f8; /* Light background color on hover */
-}
+    .user-name {
+        width: 100%;
+    }
 
-/* Adjust the staff button's alignment */
-.staf-view {
-    margin-left: auto; /* Push the button to the far right */
-}
+    .staff-container,
+    .user-section {
+        width: 100%;
+    }
 
-/* Patient registration button styles (similar to other buttons) */
-.patient-reg {
-    background-color:#0c8f06; /* Matches the background color of other buttons */
-    border: none; /* Remove default button border */
-    border-radius: 8px; /* Rounded corners for consistency */
-    color: #333; /* Text color */
-    cursor: pointer; /* Pointer cursor on hover */
-    padding: 20px; /* Similar padding to other buttons for consistency */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
-    font-size: 1rem; /* Font size for readability */
-    font-weight: 400; /* Font weight for prominence */
-    margin-right: 20px; /* Add margin for spacing */
-    font-size: 1rem;
-    color: #ffffff;
-    font-weight: bolder;
-}
-
-.patient-reg:hover {
-    background-color: #33e026; /* Hover effect color */
-    transform: scale(1.05); /* Slight scale up on hover */
-}
-
-.img-up {
-    background-color: #0c8f06; /* Matches the background color of other buttons */
-    border: none; /* Remove default button border */
-    border-radius: 8px; /* Rounded corners for consistency */
-    color: #333; /* Text color */
-    cursor: pointer; /* Pointer cursor on hover */
-    padding: 20px; /* Similar padding to other buttons for consistency */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
-    font-size: 1rem; /* Font size for readability */
-    font-weight: 400; /* Font weight for prominence */
-    margin-right: 20px; /* Add margin for spacing */
-    font-size: 1rem;
-    color: #ffffff;
-    font-weight: bolder;
-}
-
-.img-up:hover {
-    background-color: #33e026; /* Hover effect color */
-    transform: scale(1.05); /* Slight scale up on hover */
-}
-
-.pat-search {
-    background-color: #0c8f06; /* Matches the background color of other buttons */
-    border: none; /* Remove default button border */
-    border-radius: 8px; /* Rounded corners for consistency */
-    color: #333; /* Text color */
-    cursor: pointer; /* Pointer cursor on hover */
-    padding: 20px; /* Similar padding to other buttons for consistency */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
-    font-size: 1rem; /* Font size for readability */
-    font-weight: 400; /* Font weight for prominence */
-    margin-right: 20px; /* Add margin for spacing */
-    font-size: 1rem;
-    color: #ffffff;
-    font-weight: bolder;
-}
-
-.pat-search:hover {
-    background-color: #33e026; /* Hover effect color */
-    transform: scale(1.05); /* Slight scale up on hover */
-}
-
-
-.graphs {
-    background-color: #0c8f06; /* Matches the background color of other buttons */
-    border: none; /* Remove default button border */
-    border-radius: 8px; /* Rounded corners for consistency */
-    color: #333; /* Text color */
-    cursor: pointer; /* Pointer cursor on hover */
-    padding: 20px; /* Similar padding to other buttons for consistency */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
-    font-size: 1rem; /* Font size for readability */
-    font-weight: 400; /* Font weight for prominence */
-    margin-right: 20px; /* Add margin for spacing */
-    font-size: 1rem;
-    color: #ffffff;
-    font-weight: bolder;
-}
-
-.graphs:hover {
-    background-color: #33e026; /* Hover effect color */
-    transform: scale(1.05); /* Slight scale up on hover */
+    .dropdown-menu,
+    .staff-dropdown {
+        min-width: 100%;
+        left: 0;
+        right: 0;
+    }
 }

@@ -24,7 +24,6 @@ export default function Home() {
     >
 
       {/* Background overlay */}
-      <div className="background-overlay"></div>
 
       {/* Fixed header at the top */}
       <header className="home-header">
@@ -50,25 +49,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-
-      {/* Footer */}
-      <footer className="home-footer">
-        <div className="footer-content">
-          <p className="logo">CathLab</p>
-          <p>&copy; 2024 Peradeniya Hospital Cath Lab Management System. All rights reserved.</p>
-          <div className="social-links">
-            <a href="#" aria-label="Facebook">
-              <i className="fab fa-facebook-f">facebook</i>
-            </a>
-            <a href="#" aria-label="Twitter">
-              <i className="fab fa-twitter">twitter</i>
-            </a>
-            <a href="#" aria-label="LinkedIn">
-              <i className="fab fa-linkedin-in">linkedin</i>
-            </a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
