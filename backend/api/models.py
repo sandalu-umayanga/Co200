@@ -17,8 +17,8 @@ class Doctors(models.Model):
     
 
 class Patients(models.Model):
-    national_id = models.CharField(max_length=20)
-    hospital_id = models.CharField(max_length=50)
+    national_id = models.CharField(max_length=20, unique=True)
+    hospital_id = models.CharField(max_length=50, unique=True)
     name = models.CharField(max_length=100)
     birth = models.DateField()
     address = models.CharField(max_length=150)

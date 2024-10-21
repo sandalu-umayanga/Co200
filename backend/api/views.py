@@ -152,7 +152,7 @@ class DoctorsByProfessionView(APIView):
 class SearchPatientView(APIView):
     def get(self, request):
         query = request.GET.get('query', '')
-        colum = request.GET.get('colum', '')  # Fixed typo here
+        colum = request.GET.get('colum', '') 
         if query and colum:
             if colum == "national_id":
                 results = Patients.objects.filter(national_id__startswith=query)
@@ -182,6 +182,7 @@ class ReportCreateView(viewsets.ModelViewSet):
         try:
             patient = Patients.objects.get(hospital_id=hos_key)
             serializer.save(person=patient, date=date.today())
+            return Response({"message" : "saved"})
         except Patients.DoesNotExist:
             return Response({"message" : "patient not found"})
 

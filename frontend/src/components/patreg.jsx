@@ -60,7 +60,7 @@ export default function PatientForm(props) {
             }
             setTimeout(() => navigate('/home'), 1000);
         } catch (error) {
-            setError('Error updating patient profile: ' + JSON.stringify(error.response?.data));
+            setError('Error updating patient profile: Invalid National ID or Hospita ID ');
         } finally {
             setLoading(false);
         }
