@@ -7,7 +7,6 @@ export default function Graphs() {
     return (
       <div>
         <Navbar />
-        <div className="background1"></div>
         <ReportsChart />
       </div>
   )

@@ -64,7 +64,7 @@ class ViewTests(TestCase):
 
     def test_upload_images_view(self):
         # Test the upload images view
-        with open('D:/semester4/Co200/new/Co200/backend/media/profile_pics/000_ARP1908044_1Q50QNf.jpg', 'rb') as img:
+        with open('D:/semester4/Co200/new/New Folder/Co200/backend/media/profile_pics/1.PNG', 'rb') as img:
             response = self.client.post('/api/upload-images/', {'report_img': img, 'hos_id': 'H123'})
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 

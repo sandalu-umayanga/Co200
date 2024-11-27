@@ -9,7 +9,6 @@ export default function Upload_img() {
         <div>
             <Navbar />
             <ImageUpload />
-            <div className="background"></div>
         </div>
   )
 }

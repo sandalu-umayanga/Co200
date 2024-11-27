@@ -8,7 +8,6 @@ export default function P_account() {
         <div>
             <Navbar />
             <PatientForm method="create"/>
-            <div className="background"></div>
         </div>
   )
 }

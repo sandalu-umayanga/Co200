@@ -18,6 +18,8 @@ function Report() {
     const [err, seterr] = React.useState(null);
     const [err1, seterr1] = React.useState(null)
     const [isimg, setIsimg] = React.useState(null)
+    const [imgpath, setImgpath] = React.useState([])
+    const [p_image, setP_image] = React.useState([])
     const [formData, setFormData] = React.useState({
         name: "",
         Date: today,
@@ -40,15 +42,44 @@ function Report() {
     }
 
     function handleImageChange(event) {
-        const selectedImage = images[parseInt(event.target.id, 10) - 1];
+        const selectedIndex = parseInt(event.target.id, 10) - 1;
+        processing(selectedIndex);
+        const pimage_path = ["media/processed_images/1.jpg", "media/processed_images/2.jpg", "media/processed_images/3.jpg", "media/processed_images/4.jpg"];
+        const fpimages = pimage_path.map(url => {
+            return `${import.meta.env.VITE_API_URL}${url}`;
+        })
+        setP_image(fpimages)
+        const selectedImage = images[selectedIndex];
         setIsimg(selectedImage);
     }
+
     
     function handleback(){
-        setImages([])
-        setPreview(false)
-        setIsimg(null)
-        navigate("/patient-search")
+        setImages([]);
+        setPreview(false);
+        setIsimg(null);
+        navigate("/patient-search");
+    }
+    
+    const processing = async (id1) => {
+        try {
+            const response3 = await api.post("/api/imageProcess/", { path2: imgpath[0], value0 : id1 });
+        } catch (error) {
+            alert("Error processing image: " + (error.response ? error.response.data.error : error.message));
+        }
+    };
+
+    function change1(){
+        setIsimg(p_image[0]);
+    }
+    function change2(){
+        setIsimg(p_image[1]);
+    }
+    function change3(){
+        setIsimg(p_image[2]);
+    }
+    function change4(){
+        setIsimg(p_image[3]);
     }
 
     function handlePrint() {
@@ -206,7 +237,6 @@ function Report() {
                 stent_pressure: formData.stent_pressure,
                 hospital_id: hos_id // Include this if required by your backend
             });
-            console.log("Report submitted successfully:", response.data);
             alert("Report saved successfully!");
             setPreview(true)
         } catch (error) {
@@ -263,6 +293,7 @@ function Report() {
         }
         try {
             const response1 = await api.post(`/api/images/`, { hos_id: hos_id, today:true });
+            setImgpath(response1.data)
             const imageUrls = response1.data.length ? response1.data[0].report_imgs : [];
             const formattedImages = imageUrls.map(imgUrl => {
                 const imageUrl = imgUrl.startsWith('/') ? imgUrl.substring(1) : imgUrl;
@@ -301,16 +332,18 @@ function Report() {
                         <p>{err1}</p>
                         <p>{err}</p>
                     </div>
-                    <form className="search-container" onSubmit={search}>
-                        <label>Hospital ID</label>
-                        <input
-                            type="text"
-                            onChange={handleSearch}
-                            value={hos_id}
-                            placeholder="Enter Hospital ID"
-                        />
-                        <button type="submit">Search</button>
-                    </form>
+                    <div className="search-container">
+                        <form className="search-container" onSubmit={search}>
+                            <label>Hospital ID</label>
+                            <input
+                                type="text"
+                                onChange={handleSearch}
+                                value={hos_id}
+                                placeholder="Enter Hospital ID"
+                            />
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
                     <div className="form-container">
                         <h1>Cardiology Unit</h1>
                         <h2>TH Peradeniya</h2>
@@ -432,6 +465,12 @@ function Report() {
                             </div>
                             {/* 2x2 Image Grid */}
                             <img className="main-img" src={isimg} />
+                            <div className="filter-buttons">
+                                <button onClick={change1}>Equilize</button>
+                                <button onClick={change2}>Denoize</button>
+                                <button onClick={change3}>CLAHE</button>
+                                <button onClick={change4}>Frangi</button>
+                            </div>
                             <div className="image-grid">
                                 <div className="image-cell">
                                     <label>Image 1:</label>

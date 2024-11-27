@@ -5,6 +5,7 @@ html, body {
 }
 
 .main-container {
+  margin-top: 20px;
   display: flex; /* Use flexbox layout */
   flex-direction: column; /* Stack children vertically */
   min-height: 100vh; /* Minimum height of the viewport */

@@ -15,12 +15,12 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section about">
-          <h2>SmartHub</h2>
-          <p>Simplifying IoT Management.</p>
+          <h2>CathLab</h2>
+          <p>Protect Lives</p>
           <div className="contact">
             <span><img src={phone} alt='phone'/> +94 70 2 4 8 16 32</span>
-            <span><img src={env} alt='env'/> support@smarthub.com</span>
-            <span><img src={loc} alt='loc'/> 123 Innovation Drive, Tech City, TX 78901, USA</span>
+            <span><img src={env} alt='env'/> support@cathlab.com</span>
+            <span><img src={loc} alt='loc'/> cathlab, Peradeniya, Kandy</span>
           </div>
         </div>
 
@@ -28,8 +28,7 @@ export default function Footer() {
           <h2>Quick Links</h2>
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
+
           </ul>
         </div>
 

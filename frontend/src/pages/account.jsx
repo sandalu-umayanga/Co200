@@ -8,7 +8,6 @@ export default function Account() {
         <div>
             <Navbar />
             <RegisterForm method="create"/>
-            <div className="background"></div>
         </div>
   )
 }

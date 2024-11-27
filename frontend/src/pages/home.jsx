@@ -15,7 +15,6 @@ export default function Home() {
       className="home-page"
     >
 
-      {/* Background overlay */}
 
       {/* Fixed header at the top */}
       <header className="home-header">

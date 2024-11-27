@@ -22,7 +22,7 @@ p {
 }
 
 .search-container {
-    background-color: #ccc;
+    background-color: #ffffff;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -239,6 +239,7 @@ p {
 
 .main-img {
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .err-msg-report {
@@ -253,4 +254,29 @@ p {
 .err-msg-report > p {
     color: red;
     font-size: 18px;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.search-container{
+    max-width: 500px;
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+
+.search-container label {
+    color: rgb(11, 11, 11);
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }

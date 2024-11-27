@@ -8,7 +8,6 @@ export default function Report_Genaration() {
     return (
       <div>
         <Navbar />
-        <div className="background1"></div>
         <Report />
       </div>
   )

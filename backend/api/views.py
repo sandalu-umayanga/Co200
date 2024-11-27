@@ -13,6 +13,7 @@ from rest_framework import status
 from rest_framework.parsers import JSONParser
 from datetime import date
 from django.db.models import Count
+from .test1 import sub_process
 
 
 
@@ -341,3 +342,12 @@ class GetCatheterTypeReportsView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+class Create_images(APIView):   
+    def post(self, request):
+        print(request)
+        path1 = request.data.get("path2")
+        print("pppppppp", path1)
+        id = request.data.get("value0")
+        result = sub_process(path1["report_imgs"][id])
+        return Response({"aaa": "Done"})

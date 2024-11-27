@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Line, Bar, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PointElement, LineElement } from 'chart.js';
 import api from '../api';
+import '../styls/AngiogramForm.css'; // Add a CSS file for styling
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PointElement, LineElement);
 
@@ -20,8 +21,8 @@ const ReportsChart = () => {
         const reports = response.data;
         console.log("Fetched Reports Data:", reports);
 
-        const labels = reports.map((report) => report.date); 
-        const totalProcedures = reports.map((report) => report.procedure_count);  
+        const labels = reports.map((report) => report.date);
+        const totalProcedures = reports.map((report) => report.procedure_count);
 
         setChartData({
           labels: labels,
@@ -54,7 +55,7 @@ const ReportsChart = () => {
   useEffect(() => {
     const fetchAgeDistributionData = async () => {
       try {
-        const response = await api.get('/api/AgeDistribution/reports/');  
+        const response = await api.get('/api/AgeDistribution/reports/');
         const ageDistribution = response.data;
         console.log("Fetched Age Distribution Data:", ageDistribution);
         const labels = ageDistribution.map((item) => item.age_group);
@@ -126,81 +127,84 @@ const ReportsChart = () => {
   }, [graph1]);
 
   return (
-    <div>
-      <div>
-        <button onClick={() => setGraph1("1")}>Show Total Procedures Graph</button>
-        <button onClick={() => setGraph1("2")}>Show Age Distribution Graph</button>
-        <button onClick={() => setGraph1("3")}>Show Catheter Type Graph</button>
+    <div className="form-container">
+      <h1>Reports</h1>
+      <div className="button-container">
+        <button onClick={() => setGraph1("1")} className="chart-button">Show Total Procedures Graph</button>
+        <button onClick={() => setGraph1("2")} className="chart-button">Show Age Distribution Graph</button>
+        <button onClick={() => setGraph1("3")} className="chart-button">Show Catheter Type Graph</button>
       </div>
 
-      {graph1 === "1" && (
-        <div>
-          <h2>Total Procedures Over Time</h2>
-          <Line
-            data={chartData}
-            options={{
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: 'top',
+      <div className="main-report-body">
+        {graph1 === "1" && (
+          <div>
+            <h2>Total Procedures Over Time</h2>
+            <Line
+              data={chartData}
+              options={{
+                responsive: true,
+                plugins: {
+                  legend: {
+                    position: 'top',
+                  },
+                  title: {
+                    display: true,
+                    text: 'Total Procedures Over Time',
+                  },
                 },
-                title: {
-                  display: true,
-                  text: 'Total Procedures Over Time',
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                  },
                 },
-              },
-              scales: {
-                y: {
-                  beginAtZero: true, // Ensure Y-axis starts at 0
-                },
-              },
-            }}
-          />
-        </div>
-      )}
+              }}
+            />
+          </div>
+        )}
 
-      {graph1 === "2" && (
-        <div>
-          <h2>Age Distribution of Patients</h2>
-          <Bar
-            data={ageDistributionData}
-            options={{
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: 'top',
+        {graph1 === "2" && (
+          <div>
+            <h2>Age Distribution of Patients</h2>
+            <Bar
+              data={ageDistributionData}
+              options={{
+                responsive: true,
+                plugins: {
+                  legend: {
+                    position: 'top',
+                  },
+                  title: {
+                    display: true,
+                    text: 'Patient Count by Age Group',
+                  },
                 },
-                title: {
-                  display: true,
-                  text: 'Patient Count by Age Group',
-                },
-              },
-            }}
-          />
-        </div>
-      )}
+              }}
+            />
+          </div>
+        )}
 
-      {graph1 === "3" && (
-        <div style={{ width: '400px', height: '400px', margin: '0 auto' }}>
-          <h2>Catheter Type Distribution</h2>
-          <Pie
-            data={catheterData}
-            options={{
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: 'top',
+        {graph1 === "3" && (
+          <div style={{ width: '400px', height: '400px', margin: '0 auto' }}>
+            <h2>Catheter Type Distribution</h2>
+            <Pie
+              data={catheterData}
+              options={{
+                responsive: true,
+                plugins: {
+                  legend: {
+                    position: 'top',
+                  },
+                  title: {
+                    display: true,
+                    text: 'Catheter Type Count',
+                  },
                 },
-                title: {
-                  display: true,
-                  text: 'Catheter Type Count',
-                },
-              },
-              maintainAspectRatio: false, // Disable aspect ratio to allow custom sizing
-            }}
-          />
-        </div>
-      )}
+                maintainAspectRatio: false,
+              }}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

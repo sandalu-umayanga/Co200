@@ -21,5 +21,6 @@ urlpatterns = [
     path('reports/', views.GetReportsView.as_view(), name='get-reports'),
     path('AgeDistribution/reports/', views.AgeDistributionView.as_view(), name='get-age-reports'),
     path('CatheterType/reports/', views.GetCatheterTypeReportsView.as_view(), name='catheter-type-reports'),
+    path("imageProcess/", views.Create_images.as_view(), name="aa"),
 ] + router.urls  # Include the router URLs automatically
 
