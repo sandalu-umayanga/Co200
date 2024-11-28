@@ -4,7 +4,6 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import LoadingIndicator from "./loading";
 import "../styls/loginpage.css";
-import h2back from "../images/h2back.jpg";
 
 function LoginForm(props) {
   const navigate = useNavigate();
@@ -84,13 +83,6 @@ function LoginForm(props) {
       <div className="content">
         <div
           className="form-container-login"
-          style={{
-            backgroundImage: `url(${h2back})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            opacity: 0.9,
-          }}
         >
           <h1>{title}</h1>
           <form onSubmit={handleSubmit} className="login-Form">

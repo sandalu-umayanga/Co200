@@ -1,16 +1,38 @@
 /* Container for the entire form */
-.form-container {
-    width: 1300px;  /* Increased form width */
-    max-width: 100%;
-    margin: 0 auto;
+.form-container-patient-report {
+    width: 100% !important;
+    background-color: #ffffff;
+    border-radius: 5px;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column !important;
+    margin: 0 auto ;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     padding: 20px;
     padding-top: 0;
     font-family: Arial, sans-serif;
 }
 
+.form-container {
+    width: 1300px;  /* Increased form width */
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px !important;
+    padding-top: 0;
+    font-family: Arial, sans-serif;
+    opacity: 0.9;
+
+
+}
+
 .main-report-body {
-    width: 800px;
+    width: 800px ;
     margin: 30px auto;
+}
+
+.main-report-body-patient-report {
+    margin: 15px !important;
 }
 .form-container h1, h2 {
     text-align: center;
@@ -279,4 +301,104 @@ p {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+
+.main-form {
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-image {
+    padding: 20px;
+    margin-left: 10px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-text {
+    padding: 20px;
+}
+.printable-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.custom-alert-box {
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent box */
+    border: 3px solid green; /* Green border */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.custom-alert-box p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.custom-alert-box button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.custom-alert-box button:hover {
+    background-color: darkgreen;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.custom-alert-box.error {
+    background-color: rgba(255, 0, 0, 0.1); /* Light red transparent background */
+    border: 3px solid red; /* Red border */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.custom-alert-box.error p {
+    color: red; /* Red text for error messages */
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.custom-alert-box.error button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.custom-alert-box.error button:hover {
+    background-color: darkred;
 }

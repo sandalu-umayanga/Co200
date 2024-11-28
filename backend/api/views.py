@@ -345,9 +345,7 @@ class GetCatheterTypeReportsView(APIView):
         
 class Create_images(APIView):   
     def post(self, request):
-        print(request)
         path1 = request.data.get("path2")
-        print("pppppppp", path1)
         id = request.data.get("value0")
-        result = sub_process(path1["report_imgs"][id])
-        return Response({"aaa": "Done"})
+        sub_process(path1["report_imgs"][id])
+        return Response({"aaa": "Images are processed"})
