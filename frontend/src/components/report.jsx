@@ -105,39 +105,131 @@ function Report() {
 
   // Prints the report using a new window
   function handlePrint() {
-    const printableContent =
-      document.querySelector(".printable-section").innerHTML;
-    const printWindow = window.open("", "", "height=600,width=800");
+    const printableContent = document.querySelector('.printable-section').innerHTML;
+    const printWindow = window.open('', '', 'height=600,width=800');
 
     printWindow.document.open();
     printWindow.document.write(`
-            <html>
-            <head>
-                <title>Print</title>
-                <style>
-                    /* CSS for printable report layout */
-                    .report-container {
-                        width: 800px;
-                        margin: 0 auto;
-                        font-family: Arial, sans-serif;
-                        color: #333;
-                        background-color: #f9f9f9;
-                        padding: 20px;
-                        border-radius: 8px;
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                    }
-                    ...
-                </style>
+        <html>
+          <head>
+              <title>Print</title>
+              <style>
+                  /* AngiogramForm.css */
+
+                  .report-container {
+                      width: 800px;
+                      margin: 0 auto;
+                      font-family: Arial, sans-serif;
+                      color: #333;
+                      background-color: #f9f9f9;
+                      padding: 20px;
+                      border-radius: 8px;
+                  }
+
+                  h1, h2 {
+                      text-align: center;
+                      margin-bottom: 10px;
+                  }
+
+                  p {
+                      text-align: center;
+                      font-size: 14px;
+                  }
+
+                  .info-table {
+                      width: 95%;
+                      margin-top: 20px;
+                      border-collapse: collapse;
+                  }
+
+                  .info-table td {
+                      padding: 8px;
+                      border: 1px solid #ddd;
+                      font-size: 14px;
+                  }
+
+                  .info-table label {
+                      font-weight: bold;
+                      color: #555;
+                  }
+
+                  .procedure-details {
+                      margin-top: 20px;
+                      padding: 10px;
+                      background-color: #f1f1f1;
+                      border-radius: 5px;
+                  }
+
+                  .procedure-details h3 {
+                      margin-top: 0;
+                      font-size: 16px;
+                  }
+
+                  .procedure-details p {
+                      margin: 8px 0;
+                      font-size: 16px;
+                      text-align: left;
+                  }
+
+                  .recommendations {
+                      margin-top: 20px;
+                      page-break-after: always;
+                  }
+
+                  .recommendations h3 {
+                      font-size: 16px;
+                      margin-bottom: 8px;
+                  }
+
+                  .recommendations p {
+                      font-size: 16px;
+                      color: #000000;
+                      margin: 6px 0;
+                      text-align: left;
+                  }
+
+                  .signature {
+                      margin-top: 40px;
+                      text-align: right;
+                      font-size: 14px;
+                  }
+
+                  .signature p {
+                      margin: 5px 0;
+                  }
+
+                  .image-grid {
+                      display: grid;
+                      grid-template-columns: repeat(2, 1fr);
+                      gap: 10px;
+                      margin-top: 20px;
+                      page-break-before: always;
+                  }
+
+                  .image-cell {
+                      text-align: center;
+                      display: flex;
+                      flex-direction: column;
+                  }
+
+                  .image-cell img {
+                      max-width: 300px;
+                      max-height: 300px;
+                      border: 1px solid #ddd;
+                      border-radius: 5px;
+                  }
+
+              </style>
             </head>
-            <body>
-                ${printableContent}
-            </body>
-            </html>
-        `);
+        <body>
+            ${printableContent}
+        </body>
+        </html>
+    `);
     printWindow.document.close();
     printWindow.focus();
-    printWindow.print(); // Triggers the browser's print functionality
-  }
+    printWindow.print();
+}
 
   // Submits the form data to save the report
   const handlesubmit = async (event) => {
