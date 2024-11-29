@@ -26,10 +26,13 @@
 
 }
 .form-container-analyze {
-    width: 90%;  /* Increased form width */
+    width: 85%;  /* Increased form width */
     max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px !important;
+    opacity: 0.8;
     margin: 0 auto;
-    background-color: #ffffff;
+    background-color: #b4d3f7;
     padding: 20px !important;
     padding-top: 0;
     font-family: Arial, sans-serif;
