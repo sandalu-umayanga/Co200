@@ -58,7 +58,8 @@ function Report() {
 
     // Append base URL to processed image paths
     const fpimages = pimage_path.map((url) => {
-      return `${import.meta.env.VITE_API_URL}${url}`;
+      const timestamp = new Date().getTime(); // Generate a unique timestamp
+      return `${import.meta.env.VITE_API_URL}${url}?_=${timestamp}`;
     });
 
     setP_image(fpimages); // Set processed images for the preview

@@ -25,6 +25,18 @@
 
 
 }
+.form-container-analyze {
+    width: 90%;  /* Increased form width */
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px !important;
+    padding-top: 0;
+    font-family: Arial, sans-serif;
+    opacity: 0.9;
+
+
+}
 
 .main-report-body {
     width: 800px ;

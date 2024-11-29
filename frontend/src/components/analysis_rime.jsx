@@ -127,7 +127,7 @@ const ReportsChart = () => {
   }, [graph1]);
 
   return (
-    <div className="form-container">
+    <div className="form-container-analyze">
       <h1>Reports</h1>
       <div className="button-container">
         <button onClick={() => setGraph1("1")} className="chart-button">Show Total Procedures Graph</button>
