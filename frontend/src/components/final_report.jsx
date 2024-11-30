@@ -14,7 +14,7 @@ function AngiogramReportView(props) {
             <h2>TH Peradeniya</h2>
             <p>(SBSCH Cardiac Catheterization Lab)</p>
             <p>PER</p>
-            
+            <p>{reportData.Date}</p>
             {/* Patient and Report Information Section */}
             <table className="info-table">
                 <tbody>

@@ -8,7 +8,12 @@ function Report() {
   const navigate = useNavigate();
 
   // Today's date formatted as YYYY-MM-DD
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date();
+  const offset = today.getTimezoneOffset(); // Time zone offset in minutes
+  const localDate = new Date(today.getTime() - offset * 60 * 1000)
+    .toISOString()
+    .split("T")[0];
+
 
   // State variables to manage component data
   const [images, setImages] = React.useState([]); // Stores the list of images
@@ -23,7 +28,7 @@ function Report() {
   const [p_image, setP_image] = React.useState([]); // Stores processed images for preview
   const [formData, setFormData] = React.useState({
     name: "",
-    Date: today,
+    Date: localDate,
     Age: "",
     DOB: "",
     Indication: "",

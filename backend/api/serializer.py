@@ -50,14 +50,17 @@ class PassProfSerializer(serializers.Serializer):
     profe = serializers.CharField(max_length=100)
 
 
-class ReportsSerializer(serializers.ModelSerializer):
+from rest_framework import serializers
+from .models import Reports  # Make sure to import the Reports model
 
+class ReportsSerializer(serializers.ModelSerializer):
     discription = serializers.CharField(required=False, allow_blank=True)
 
     class Meta:
         model = Reports
         fields = [
-            'id',                 
+            'id',
+            "date",
             'Indication',
             'BHT',
             'oparators',
@@ -68,17 +71,19 @@ class ReportsSerializer(serializers.ModelSerializer):
             'baloon_size',
             'baloon_presure',
             'stent_name',
-            'stent_pressure'
+            'stent_pressure',
+            'date',  # Include date in the fields list
         ]
         extra_kwargs = {
             'person': {'required': True},
-            'date': {'required': True},
+            'date': {'required': True, 'read_only': True},  # Set the date field to read-only
             'Indication': {'required': True},
             'BHT': {'required': True},
             'oparators': {'required': True},
             'Vascular_Access': {'required': True},
-            'Catheters': {'required': True}
+            'Catheters': {'required': True},
         }
+
  
 
 class ReportsCountSerializer(serializers.Serializer):

@@ -17,6 +17,7 @@ export default function Staff() {
         const fetchDoctors = async () => {
             try {
                 // Make a POST request to fetch doctors of a specific profession.
+                setStaff([])
                 const response = await api.post(`api/doctor_list/`, { profe: name });
                 setStaff(response.data); // Update the state with the fetched data.
             } catch (error) {

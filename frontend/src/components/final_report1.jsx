@@ -13,7 +13,7 @@ function AngiogramReportView1(props) {
             <h1>Cardiology Unit</h1>
             <h2>TH Peradeniya</h2>
             <p>(SBSCH Cardiac Catheterization Lab)</p>
-            <p>PER</p>
+            <p>{reportData.date}</p>
             
             {/* Table displaying patient and procedural information */}
             <table className="info-table">

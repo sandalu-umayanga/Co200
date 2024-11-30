@@ -42,13 +42,40 @@ function LoginForm(props) {
         localStorage.setItem(REFRESH_TOKEN, res.data.refresh);  // Store refresh token in localStorage
         navigate("/home");  // Redirect to the home page after successful login
       } else {  // If register method is selected
-        if (password === confirm) {  // Check if password and confirm password match
-          const res = await api.post(props.rout, { username, password });  // Send POST request for registration
-          navigate("/home");  // Redirect to the home page after successful registration
+        // Validate password strength
+        const passwordValidation = (password) => {
+          const minLength = 8;
+          const hasUpperCase = /[A-Z]/.test(password);
+          const hasLowerCase = /[a-z]/.test(password);
+          const hasNumber = /[0-9]/.test(password);
+          const hasSpecialChar = /[@$!%*?&#]/.test(password);
+      
+          if (password.length < minLength) return "Password must be at least 8 characters long.";
+          if (!hasUpperCase) return "Password must contain at least one uppercase letter.";
+          if (!hasLowerCase) return "Password must contain at least one lowercase letter.";
+          if (!hasNumber) return "Password must contain at least one number.";
+          if (!hasSpecialChar) return "Password must contain at least one special character.";
+          return null; // Validation passed
+        };
+      
+        // Check password and confirm password match
+        if (password === confirm) {
+          const validationError = passwordValidation(password);
+          if (validationError) {
+            SetError(validationError);  // Display validation error
+          } else {
+            try {
+              const res = await api.post(props.rout, { username, password });  // Send POST request for registration
+              navigate("/home");  // Redirect to the home page after successful registration
+            } catch (error) {
+              SetError("An error occurred during registration.");  // Handle backend error
+            }
+          }
         } else {
           SetError("Password and Confirm Password didn't match");  // Display error if passwords don't match
         }
       }
+      
     } catch (error) {
       // Handle different error responses from the backend
       if (error.response) {

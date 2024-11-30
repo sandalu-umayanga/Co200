@@ -23,6 +23,13 @@ function ImageUpload() {
   const handleSubmit = async (e) => {
     e.preventDefault();  // Prevent the default form submission behavior
 
+    // Check image list is null.
+    if (images.length == 0){
+      setError("Upload Images");
+      setSuccess(null)
+      return;
+    }
+
     // Create a new FormData object to append the files and hospital ID for submission
     const formData = new FormData();
     formData.append('hos_id', hosId);

@@ -137,11 +137,9 @@ class DoctorsByProfessionView(APIView):
     parser_classes = [JSONParser]  # Use JSONParser for handling JSON data
 
     def post(self, request):
-        print("Request data:", request.data)  # Ensure this line is executed
         serializer = PassProfSerializer(data=request.data)
         if serializer.is_valid():
             profe = serializer.validated_data.get('profe')
-            print("Profession:", profe)  # Ensure this line is executed
             doctors = Doctors.objects.filter(profecion__iexact=profe)
             if not doctors:
                 return Response({"detail": "No doctors found with this profession."}, status=status.HTTP_404_NOT_FOUND)
@@ -192,8 +190,13 @@ class UploadImagesView(APIView):
     parser_classes = (MultiPartParser, FormParser)
     def post(self, request, *args, **kwargs):
         files = request.FILES.getlist('report_img') 
-        hos_id = request.data.get('hos_id')  
+        hos_id = request.data.get('hos_id') 
 
+        if not Patients.objects.filter(hospital_id=hos_id).exists():
+            return Response({"err" : "Hospital_ID do not exists"})
+        
+        Images.objects.filter(hos_id=hos_id, date=date.today()).delete()
+        
         file_paths = []
         for file in files:
             file_path = f'media/report_img/{file.name}' 
@@ -205,8 +208,6 @@ class UploadImagesView(APIView):
             'hos_id': hos_id,
             'report_imgs': file_paths, 
         }
-        if not Patients.objects.filter(hospital_id=hos_id).exists():
-            return Response({"err" : "Hospital_ID do not exists"})
         serializer = ImageSerializer(data=image_data)
         if serializer.is_valid():
             serializer.save(date=date.today())
@@ -219,6 +220,7 @@ class ImageByHosIDView(APIView):
     def post(self, request):
         hos_id = request.data.get('hos_id')
         stat1 = request.data.get("today")
+        date0 = request.data.get('ddate')
         if stat1:
             if not hos_id:
                 return Response({"error": "Hospital ID is required"}, status=status.HTTP_400_BAD_REQUEST)
@@ -230,7 +232,7 @@ class ImageByHosIDView(APIView):
         else:
             if not hos_id:
                 return Response({"error": "Hospital ID is required"}, status=status.HTTP_400_BAD_REQUEST)
-            images = Images.objects.filter(hos_id=hos_id)
+            images = Images.objects.filter(hos_id=hos_id, date=date0)
             if images.exists():
                 serializer = ImageSerializer(images, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
@@ -253,7 +255,6 @@ class GetReportsView(APIView):
     def get(self, request, *args, **kwargs):
         try:
             reports = Reports.objects.values('date').annotate(procedure_count=Count('id')).order_by('date')
-            print(reports)  
             serializer = ReportsCountSerializer(reports, many=True)
 
             return Response(serializer.data, status=status.HTTP_200_OK)
